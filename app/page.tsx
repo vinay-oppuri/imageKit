@@ -3,6 +3,11 @@
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 
+export const metadata = {
+  title: "VidShare - Discover & Share Videos",
+  description: "Explore and share amazing videos from creators around the world on VidShare.",
+}
+
 export default function Home() {
   return (
     <section className="relative flex flex-col-reverse md:flex-row items-center justify-between px-4 md:px-20 py-10 md:py-20 bg-muted">
