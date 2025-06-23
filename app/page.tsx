@@ -3,7 +3,7 @@ import { Metadata } from "next"
 import Link from "next/link"
 
 export const metadata: Metadata = {
-  title: "VidShare - Discover & Share Videos",
+  title: "Clipo - Discover & Share Videos",
   description: "Explore and share amazing videos from creators around the world on VidShare.",
 }
 

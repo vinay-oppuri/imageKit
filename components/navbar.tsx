@@ -134,7 +134,7 @@ const Navbar = () => {
         <Home className="w-6 h-6" />
         <span className="text-xs mt-1">Home</span>
       </Link>
-      <Link href="/profile" className="flex flex-col items-center hover:text-muted-foreground">
+      <Link href="/auth/profile" className="flex flex-col items-center hover:text-muted-foreground">
         <User className="w-6 h-6" />
         <span className="text-xs mt-1">Profile</span>
       </Link>
