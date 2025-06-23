@@ -30,6 +30,10 @@ export default function UploadPage() {
       </section>
 
       <VideoUploadForm />
+      <div className="text-3xl">
+        Upload Here <br /> 
+      </div>
+      <p>Hi</p>
     </div>
   )
 }
