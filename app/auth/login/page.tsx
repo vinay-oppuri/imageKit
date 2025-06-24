@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { signIn } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
 import { useSession } from 'next-auth/react'
+import { User, Lock } from 'lucide-react'
 
 const LoginPage = () => {
   const router = useRouter()
@@ -47,22 +48,29 @@ const LoginPage = () => {
         <h1 className="text-2xl font-semibold text-center mb-6">Login</h1>
 
         <form onSubmit={onLogin} className="flex flex-col gap-4">
-          <input
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="p-3 rounded-md border border-input bg-background text-foreground placeholder:text-muted-foreground outline-none focus:ring-2 ring-ring"
-            required
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="p-3 rounded-md border border-input bg-background text-foreground placeholder:text-muted-foreground outline-none focus:ring-2 ring-ring"
-            required
-          />
+          <div className='flex items-center gap-4'>
+            <User className="text-foreground" size={25}/>
+            <input
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full p-2.5 rounded-lg border border-input bg-background text-foreground placeholder:text-muted-foreground outline-none focus:ring-2 ring-ring"
+              required
+            />
+          </div>
+
+          <div className='flex items-center gap-4'>
+            <Lock className="text-foreground" size={25}/>
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full p-2.5 rounded-lg border border-input bg-background text-foreground placeholder:text-muted-foreground outline-none focus:ring-2 ring-ring"
+              required
+            />
+          </div>
 
           <div className="text-right text-sm text-blue-600 dark:text-blue-400">
             <Link href="/auth/reset">Forgot Password?</Link>

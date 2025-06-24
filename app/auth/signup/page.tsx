@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { useSession } from 'next-auth/react'
+import { User, Mail, Lock, Check } from 'lucide-react'
 
 const SignUpPage = () => {
   const router = useRouter()
@@ -34,7 +35,7 @@ const SignUpPage = () => {
       })
 
       router.replace('/auth/login')
-    } catch  {
+    } catch {
       toast.error('Registration Failed', { duration: 4000 })
     }
   }
@@ -49,42 +50,54 @@ const SignUpPage = () => {
 
   return (
     <main className="flex items-center justify-center p-4 bg-background text-foreground mt-10  md:mt-16">
-      <div className="w-[95%] max-w-md bg-card text-card-foreground shadow-lg rounded-lg p-6 sm:p-8 border border-border">
+      <div className="w-[95%] max-w-md bg-card shadow-lg rounded-lg p-6 sm:p-8 border border-border">
         <h1 className="text-2xl sm:text-3xl font-bold text-center mb-6">Sign Up</h1>
 
         <form onSubmit={onSignUp} className="space-y-4">
-          <input
-            type="text"
-            placeholder="Username"
-            value={username}
-            required
-            onChange={(e) => setUsername(e.target.value)}
-            className="w-full p-3 rounded-lg border bg-background text-foreground border-border focus:outline-none focus:ring-2 focus:ring-ring"
-          />
-          <input
-            type="email"
-            placeholder="Email"
-            value={email}
-            required
-            onChange={(e) => setEmail(e.target.value)}
-            className="w-full p-3 rounded-lg border bg-background text-foreground border-border focus:outline-none focus:ring-2 focus:ring-ring"
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            required
-            onChange={(e) => setPassword(e.target.value)}
-            className="w-full p-3 rounded-lg border bg-background text-foreground border-border focus:outline-none focus:ring-2 focus:ring-ring"
-          />
-          <input
-            type="password"
-            placeholder="Confirm Password"
-            value={confirmPassword}
-            required
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            className="w-full p-3 rounded-lg border bg-background text-foreground border-border focus:outline-none focus:ring-2 focus:ring-ring"
-          />
+          <div className='flex items-center gap-4 '>
+            <User className="text-foreground" size={25} />
+            <input
+              type="text"
+              placeholder="Username"
+              value={username}
+              required
+              onChange={(e) => setUsername(e.target.value)}
+              className="w-full p-2 rounded-lg border bg-background text-foreground border-border focus:outline-none focus:ring-2 focus:ring-ring"
+            />
+          </div>
+          <div className='flex items-center gap-4'>
+            <Mail className="text-foreground" size={25} />
+            <input
+              type="email"
+              placeholder="Email"
+              value={email}
+              required
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full p-2 rounded-lg border bg-background text-foreground border-border focus:outline-none focus:ring-2 focus:ring-ring"
+            />
+          </div>
+          <div className='flex items-center gap-4'>
+            <Lock className="text-foreground" size={25} />
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              required
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full p-2 rounded-lg border bg-background text-foreground border-border focus:outline-none focus:ring-2 focus:ring-ring"
+            />
+          </div>
+          <div className='flex items-center gap-4'>
+            <Check className="text-foreground" size={25}/>
+            <input
+              type="password"
+              placeholder="Confirm Password"
+              value={confirmPassword}
+              required
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              className="w-full p-2 rounded-lg border bg-background text-foreground border-border focus:outline-none focus:ring-2 focus:ring-ring"
+            />
+          </div>
 
           <button
             type="submit"
@@ -96,7 +109,7 @@ const SignUpPage = () => {
 
         <p className="mt-4 text-center text-sm text-muted-foreground">
           Already have an account?{' '}
-          <Link href="/auth/login" className="underline text-blue-600 dark:text-blue-400">      
+          <Link href="/auth/login" className="underline text-blue-600 dark:text-blue-400">
             Login
           </Link>
         </p>
