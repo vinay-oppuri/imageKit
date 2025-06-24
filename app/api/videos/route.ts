@@ -49,7 +49,7 @@ export async function POST(request: NextRequest) {
             transformation: {
                 height: 1920,
                 width: 1080,
-                quality: body.transformation?.quality ?? 100
+                quality: body.transformation?.quality || 100
             }
         }
 

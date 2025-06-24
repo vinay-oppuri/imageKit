@@ -2,39 +2,48 @@ import VideoUploadForm from "@/components/video/videoUploadForm"
 import Link from "next/link"
 
 export default function UploadPage() {
+  const steps = [
+    {
+      title: "1. Record or Select Video",
+      desc: "Shoot a new video or pick one from your device.",
+    },
+    {
+      title: "2. Upload & Add Details",
+      desc: "Title, description, tags—let your audience discover your masterpiece.",
+      link: true,
+    },
+    {
+      title: "3. Share & Inspire",
+      desc: "Publish your video and get discovered!",
+    },
+  ]
+
   return (
-    <div className="p-4">
-      
-      <section className="bg-muted px-4 md:px-20 py-12">
-        <h2 className="text-2xl font-bold mb-2">Share Your Story In 3 Easy Steps</h2>
-        <p className="text-muted-foreground mb-8 max-w-xl">
-          Whether it’s a travel adventure, tutorial, or funny moment—record and share your world with others.
+    <div className="grid md:grid-cols-2 gap-8 px-4 md:px-20 py-12 mt-15">
+      <section>
+        <h2 className="text-2xl font-bold mb-4">Share Your Story in 3 Easy Steps</h2>
+        <p className="text-muted-foreground mb-6 max-w-xl">
+          Whether it&apos;s a travel adventure, tutorial, or funny moment—record and share your world with others.
         </p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          <div className="bg-card p-6 rounded-xl shadow">
-            <h4 className="font-bold mb-2">1. Record or Select Video</h4>
-            <p className="text-muted-foreground text-sm">Shoot a new video or pick one from your device.</p>
-          </div>
-          <div className="bg-card p-6 rounded-xl shadow">
-            <h4 className="font-bold mb-2">2. Upload & Add Details</h4>
-            <p className="text-muted-foreground text-sm">
-              Title, description, tags—let your audience discover your masterpiece.
-            </p>
-            <Link href="/upload" className="text-primary mt-2 block">Learn More →</Link>
-          </div>
-          <div className="bg-card p-6 rounded-xl shadow">
-            <h4 className="font-bold mb-2">3. Share & Inspire</h4>
-            <p className="text-muted-foreground text-sm">Publish your video and get discovered!</p>
-          </div>
+        <div className="grid gap-4">
+          {steps.map((step, idx) => (
+            <div key={idx} className="bg-card p-6 rounded-xl shadow">
+              <h4 className="font-bold mb-1">{step.title}</h4>
+              <p className="text-sm text-muted-foreground">{step.desc}</p>
+              {step.link && (
+                <Link href="/upload" className="text-primary mt-2 inline-block">
+                  Learn More →
+                </Link>
+              )}
+            </div>
+          ))}
         </div>
       </section>
 
-      <VideoUploadForm />
-      <div className="text-3xl">
-        Upload Here <br /> 
+      <div>
+        <h1 className="text-center text-2xl font-bold mt-1 -mb-5">Upload Here</h1>
+        <VideoUploadForm />
       </div>
-      <p>Hi</p>
     </div>
   )
 }
-
