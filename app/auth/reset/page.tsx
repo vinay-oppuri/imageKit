@@ -5,6 +5,7 @@ import axios from 'axios'
 import toast from 'react-hot-toast'
 import { useRouter } from 'next/navigation'
 import { Button } from '@/components/ui/button'
+import { Mail } from 'lucide-react'
 
 const ResetPage = () => {
   const router = useRouter()
@@ -26,14 +27,18 @@ const ResetPage = () => {
     <div className="flex flex-col justify-center items-center gap-6 p-4">
       <h1 className="text-2xl font-bold">Reset Your Password</h1>
       <form onSubmit={handleRequest} className="flex flex-col gap-4 w-full max-w-sm">
-        <input
-          type="email"
-          placeholder="Enter your email"
-          className="p-2 border rounded-lg"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
+        <div tabIndex={0} className="flex items-center bg-background group border rounded-lg focus-within:ring-2 focus-within:ring-blue-500">
+          <input
+            type="email"
+            placeholder="Enter your email"
+            value={email}
+            required
+            onChange={(e) => setEmail(e.target.value)}
+            className="w-full p-2.5 rounded-lg bg-background outline-none"
+          />
+          <Mail className="text-foreground mr-3" size={20} />
+        </div>
+
         <Button>Send Reset Link</Button>
       </form>
     </div>

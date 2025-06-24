@@ -5,6 +5,7 @@ import { useParams, useRouter } from 'next/navigation'
 import axios from 'axios'
 import toast from 'react-hot-toast'
 import { Button } from '@/components/ui/button'
+import { Check, Lock } from 'lucide-react'
 
 const ResetTokenPage = () => {
   const params = useParams() as { token: string }
@@ -44,22 +45,29 @@ const ResetTokenPage = () => {
     <div className="flex flex-col justify-center items-center gap-6 p-4">
       <h1 className="text-2xl font-bold">Set New Password</h1>
       <form onSubmit={handleReset} className="flex flex-col gap-4 w-full max-w-sm">
-        <input
-          type="password"
-          placeholder="New password"
-          className="p-2 border rounded-lg"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-        <input
-          type="password"
-          placeholder="Confirm password"
-          className="p-2 border rounded-lg"
-          value={confirm}
-          onChange={(e) => setConfirm(e.target.value)}
-          required
-        />
+        <div tabIndex={0} className="flex items-center bg-background group border rounded-lg focus-within:ring-2 focus-within:ring-blue-500">
+          <input
+            type="password"
+            placeholder="New password"
+            value={password}
+            required
+            onChange={(e) => setPassword(e.target.value)}
+            className="w-full p-2.5 rounded-lg bg-background outline-none"
+          />
+          <Lock className="text-foreground mr-3" size={20} />
+        </div>
+
+        <div tabIndex={0} className="flex items-center bg-background group border rounded-lg focus-within:ring-2 focus-within:ring-blue-500">
+          <input
+            type="password"
+            placeholder="Confirm password"
+            value={confirm}
+            required
+            onChange={(e) => setConfirm(e.target.value)}
+            className="w-full p-2.5 rounded-lg bg-background outline-none"
+          />
+          <Check className="text-foreground mr-3" size={20} />
+        </div>
         <Button type="submit" disabled={loading}>
           {loading ? 'Updating...' : 'Update Password'}
         </Button>

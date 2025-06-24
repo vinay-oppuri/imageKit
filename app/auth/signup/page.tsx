@@ -54,50 +54,53 @@ const SignUpPage = () => {
         <h1 className="text-2xl sm:text-3xl font-bold text-center mb-6">Sign Up</h1>
 
         <form onSubmit={onSignUp} className="space-y-4">
-          <div className='flex items-center gap-4 '>
-            <User className="text-foreground" size={25} />
+          <div tabIndex={0} className="flex items-center bg-background group border rounded-lg focus-within:ring-2 focus-within:ring-blue-500">
             <input
               type="text"
               placeholder="Username"
               value={username}
               required
               onChange={(e) => setUsername(e.target.value)}
-              className="w-full p-2 rounded-lg border bg-background text-foreground border-border focus:outline-none focus:ring-2 focus:ring-ring"
+              className="w-full p-2.5 rounded-lg bg-background outline-none"
             />
+            <User className="text-foreground mr-3" size={20}/>
           </div>
-          <div className='flex items-center gap-4'>
-            <Mail className="text-foreground" size={25} />
+
+          <div tabIndex={0} className="flex items-center bg-background group border rounded-lg focus-within:ring-2 focus-within:ring-blue-500">
             <input
               type="email"
               placeholder="Email"
               value={email}
               required
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full p-2 rounded-lg border bg-background text-foreground border-border focus:outline-none focus:ring-2 focus:ring-ring"
+              className="w-full p-2.5 rounded-lg bg-background outline-none"
             />
+            <Mail className="text-foreground mr-3" size={20}/>
           </div>
-          <div className='flex items-center gap-4'>
-            <Lock className="text-foreground" size={25} />
+
+          <div tabIndex={0} className="flex items-center bg-background group border rounded-lg focus-within:ring-2 focus-within:ring-blue-500">
             <input
               type="password"
               placeholder="Password"
               value={password}
               required
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full p-2 rounded-lg border bg-background text-foreground border-border focus:outline-none focus:ring-2 focus:ring-ring"
+              className="w-full p-2.5 rounded-lg bg-background outline-none"
             />
+            <Lock className="text-foreground mr-3" size={20}/>
           </div>
-          <div className='flex items-center gap-4'>
-            <Check className="text-foreground" size={25} />
+
+          <div tabIndex={0} className="flex items-center bg-background group border rounded-lg focus-within:ring-2 focus-within:ring-blue-500">
             <input
               type="password"
               placeholder="Confirm Password"
               value={confirmPassword}
               required
               onChange={(e) => setConfirmPassword(e.target.value)}
-              className="w-full p-2 rounded-lg border bg-background text-foreground border-border focus:outline-none focus:ring-2 focus:ring-ring"
+              className="w-full p-2.5 rounded-lg bg-background outline-none"
             />
-          </div><br />
+            <Check className="text-foreground mr-3" size={20}/>
+          </div>
 
           <button
             type="submit"
@@ -105,7 +108,7 @@ const SignUpPage = () => {
           >
             Register
           </button>
-        </form>
+        </form> <br />
 
         <p className="mt-4 text-center text-sm text-muted-foreground">
           Already have an account?{' '}

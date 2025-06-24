@@ -48,28 +48,28 @@ const LoginPage = () => {
         <h1 className="text-2xl font-semibold text-center mb-6">Login</h1>
 
         <form onSubmit={onLogin} className="flex flex-col gap-4">
-          <div className='flex items-center gap-4'>
-            <User className="text-foreground" size={25} />
+          <div tabIndex={0} className="flex items-center bg-background group border rounded-lg focus-within:ring-2 focus-within:ring-blue-500">
             <input
               type="email"
               placeholder="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full p-2.5 rounded-lg border border-input bg-background text-foreground placeholder:text-muted-foreground outline-none focus:ring-2 ring-ring"
+              className="w-full p-2.5 rounded-lg bg-background outline-none"
               required
             />
+            <User className="text-foreground mr-3" size={20}/>
           </div>
 
-          <div className='flex items-center gap-4'>
-            <Lock className="text-foreground float" size={25} />
+          <div tabIndex={0} className="flex items-center bg-background group border rounded-lg focus-within:ring-2 focus-within:ring-blue-500">
             <input
               type="password"
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full p-2.5 rounded-lg border border-input bg-background text-foreground placeholder:text-muted-foreground outline-none focus:ring-2 ring-ring"
+              className="w-full p-2.5 rounded-lg bg-background outline-none"
               required
             />
+            <Lock className="text-foreground mr-3" size={20}/>
           </div>
 
           <div className="text-right text-sm text-blue-600 dark:text-blue-400">
