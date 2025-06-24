@@ -49,7 +49,7 @@ const LoginPage = () => {
 
         <form onSubmit={onLogin} className="flex flex-col gap-4">
           <div className='flex items-center gap-4'>
-            <User className="text-foreground" size={25}/>
+            <User className="text-foreground" size={25} />
             <input
               type="email"
               placeholder="Email"
@@ -61,7 +61,7 @@ const LoginPage = () => {
           </div>
 
           <div className='flex items-center gap-4'>
-            <Lock className="text-foreground" size={25}/>
+            <Lock className="text-foreground" size={25} />
             <input
               type="password"
               placeholder="Password"
@@ -76,13 +76,17 @@ const LoginPage = () => {
             <Link href="/auth/reset">Forgot Password?</Link>
           </div>
 
-          <button
-            type="submit"
-            className="p-3 bg-primary text-primary-foreground font-semibold rounded-md hover:opacity-90 transition"
-          >
-            Sign In
-          </button>
+          <div className='flex justify-center'>
+            <button
+              type="submit"
+              className="w-[40%] p-2 bg-primary text-primary-foreground font-semibold rounded-md hover:opacity-90 transition"
+            >
+              Sign In
+            </button>
+          </div>
         </form>
+        <br />
+        --------------------OR--------------------
 
         <div className="text-center text-sm mt-4">
           Don&apos;t have an account?{' '}

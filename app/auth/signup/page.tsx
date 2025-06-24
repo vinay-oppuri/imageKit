@@ -88,7 +88,7 @@ const SignUpPage = () => {
             />
           </div>
           <div className='flex items-center gap-4'>
-            <Check className="text-foreground" size={25}/>
+            <Check className="text-foreground" size={25} />
             <input
               type="password"
               placeholder="Confirm Password"
@@ -97,14 +97,16 @@ const SignUpPage = () => {
               onChange={(e) => setConfirmPassword(e.target.value)}
               className="w-full p-2 rounded-lg border bg-background text-foreground border-border focus:outline-none focus:ring-2 focus:ring-ring"
             />
-          </div>
+          </div><br />
 
-          <button
-            type="submit"
-            className="w-full p-2 rounded-lg bg-primary text-primary-foreground hover:bg-opacity-90 transition"
-          >
-            Submit
-          </button>
+          <div className='flex justify-center'>
+            <button
+              type="submit"
+              className="w-[40%] p-2 bg-primary text-primary-foreground font-semibold rounded-md hover:opacity-90 transition"
+            >
+              Register
+            </button>
+          </div>
         </form>
 
         <p className="mt-4 text-center text-sm text-muted-foreground">
