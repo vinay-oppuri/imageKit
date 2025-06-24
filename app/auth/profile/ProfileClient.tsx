@@ -28,7 +28,7 @@ const ProfileClient = () => {
   if (status === 'loading') return <p className="text-center mt-10">Loading...</p>
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-background text-foreground p-4">
+    <div className="flex items-center justify-center bg-background text-foreground p-4 mt-20 md:mt-25">
       <div className="w-full max-w-md p-6 rounded-xl border border-border bg-card shadow-md space-y-4 text-center">
         <h1 className="text-2xl font-bold mb-2">Welcome, {session?.user?.name || 'User'}!</h1>
         <p className="text-muted-foreground">

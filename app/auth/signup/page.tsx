@@ -48,7 +48,7 @@ const SignUpPage = () => {
   }, [session, router])
 
   return (
-    <main className="flex items-center justify-center min-h-screen p-4 bg-background text-foreground">
+    <main className="flex items-center justify-center p-4 bg-background text-foreground mt-13  md:mt-16">
       <div className="w-[95%] max-w-md bg-card text-card-foreground shadow-lg rounded-lg p-6 sm:p-8 border border-border">
         <h1 className="text-2xl sm:text-3xl font-bold text-center mb-6">Sign Up</h1>
 
@@ -96,7 +96,7 @@ const SignUpPage = () => {
 
         <p className="mt-4 text-center text-sm text-muted-foreground">
           Already have an account?{' '}
-          <Link href="/login" className="underline text-blue-600 dark:text-blue-400">      
+          <Link href="/auth/login" className="underline text-blue-600 dark:text-blue-400">      
             Login
           </Link>
         </p>

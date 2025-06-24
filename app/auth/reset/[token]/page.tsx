@@ -41,7 +41,7 @@ const ResetTokenPage = () => {
   }
 
   return (
-    <div className="min-h-screen flex flex-col justify-center items-center gap-6 p-4">
+    <div className="flex flex-col justify-center items-center gap-6 p-4">
       <h1 className="text-2xl font-bold">Set New Password</h1>
       <form onSubmit={handleReset} className="flex flex-col gap-4 w-full max-w-sm">
         <input

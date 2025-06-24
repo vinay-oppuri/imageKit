@@ -42,7 +42,7 @@ const LoginPage = () => {
   if (status === 'loading') return <p>Loading...</p>
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 bg-background text-foreground">
+    <div className="flex items-center justify-center px-4 bg-background text-foreground mt-20 md:mt-25">
       <div className="w-[95%] max-w-sm bg-card p-6 rounded-xl shadow-md">
         <h1 className="text-2xl font-semibold text-center mb-6">Login</h1>
 
