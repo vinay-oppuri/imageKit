@@ -99,14 +99,12 @@ const SignUpPage = () => {
             />
           </div><br />
 
-          <div className='flex justify-center'>
-            <button
-              type="submit"
-              className="w-[40%] p-2 bg-primary text-primary-foreground font-semibold rounded-md hover:opacity-90 transition"
-            >
-              Register
-            </button>
-          </div>
+          <button
+            type="submit"
+            className="w-full p-2 bg-primary text-primary-foreground font-semibold rounded-md hover:opacity-90 transition"
+          >
+            Register
+          </button>
         </form>
 
         <p className="mt-4 text-center text-sm text-muted-foreground">
