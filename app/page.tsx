@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <section className="relative flex flex-col-reverse md:flex-row items-center justify-between px-4 md:px-20 py-10 md:py-20 bg-muted mt-15">
+    <section className="relative flex flex-col-reverse md:flex-row items-center justify-between px-4 md:px-20 py-12 bg-muted mb-10">
         <div className="max-w-lg">
           <h2 className="text-sm uppercase tracking-wider text-muted-foreground font-semibold mb-2">
             Share Your Moments

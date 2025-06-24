@@ -19,7 +19,7 @@ export default function UploadPage() {
   ]
 
   return (
-    <div className="grid md:grid-cols-2 gap-8 px-4 md:px-20 py-12 mt-15">
+    <div className="grid md:grid-cols-2 gap-8 px-4 md:px-20 py-12 mb-10">
       <section>
         <h2 className="text-2xl font-bold mb-4">Share Your Story in 3 Easy Steps</h2>
         <p className="text-muted-foreground mb-6 max-w-xl">
@@ -40,7 +40,7 @@ export default function UploadPage() {
         </div>
       </section>
 
-      <div>
+      <div className="">
         <h1 className="text-center text-2xl font-bold mt-1 -mb-5">Upload Here</h1>
         <VideoUploadForm />
       </div>

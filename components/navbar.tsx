@@ -31,7 +31,7 @@ const Navbar = () => {
   return (
     <>
       {/* Top Navbar */}
-      <nav className='bg-background text-foreground fixed top-0 left-0 right-0 flex items-center justify-between p-5 z-50 shadow-sm border-b border-border'>
+      <nav className='bg-background text-foreground sticky top-0 left-0 right-0 flex items-center justify-between p-5 z-50 shadow-sm border-b border-border'>
         <Link
           href="/"
           className="text-lg font-semibold px-2 sm:px-8 md:px-20 flex items-center"
@@ -59,7 +59,7 @@ const Navbar = () => {
       <div className='hidden md:flex items-center gap-4 px-20'>
         <Link href='/auth/login'>
           <Button>
-            {session?.user?.name ?? 'Get Started'}
+            {session?.user?.name ? `Hi, ${session?.user?.name}` : 'Get Started'}
           </Button>
         </Link>
 

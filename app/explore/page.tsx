@@ -22,7 +22,7 @@ const Explore = () => {
   if (loading) return <p className="text-center py-10">Loading popular videos...</p>
 
   return (
-    <section className="px-4 md:px-20 py-12 mt-15">
+    <section className="px-4 md:px-20 py-12 mb-10">
       <h2 className="text-2xl font-bold mb-4">Popular Videos</h2>
       <p className="mb-6 text-muted-foreground">Browse trending videos shared by our community</p>
 

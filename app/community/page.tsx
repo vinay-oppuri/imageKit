@@ -4,7 +4,7 @@ import React from 'react'
 
 const Community = () => {
     return (
-        <section className="flex flex-col md:flex-row justify-between items-center px-4 md:px-20 py-12 bg-accent rounded-xl mx-4 md:mx-20 mt-25">
+        <section className="flex flex-col md:flex-row justify-between items-center px-4 md:px-20 py-10 bg-accent rounded-xl mx-4 md:mx-20 mt-10 mb-10">
             <div className="mb-6 md:mb-0 w-full md:w-1/3 h-48 md:h-60 bg-primary/20 rounded-xl flex items-center justify-center">
                 <span className="text-primary font-semibold text-lg">🌟 Creator Highlight</span>
             </div>
