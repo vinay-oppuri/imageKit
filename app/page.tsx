@@ -1,22 +1,19 @@
+'use client'
 import { Button } from "@/components/ui/button"
-import { Metadata } from "next"
 import Link from "next/link"
 
-export const metadata: Metadata = {
-  title: "Clipo - Discover & Share Videos",
-  description: "Explore and share amazing videos from creators around the world on VidShare.",
-}
-
 export default function Home() {
+  
   return (
-    <section className="relative flex flex-col-reverse md:flex-row items-center justify-between px-4 md:px-20 py-12 bg-muted mb-10">
+    <>
+      <section className="relative flex flex-col-reverse md:flex-row items-center justify-between px-4 md:px-20 py-12 bg-muted mb-10">
         <div className="max-w-lg">
           <h2 className="text-sm uppercase tracking-wider text-muted-foreground font-semibold mb-2">
             Share Your Moments
           </h2>
           <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-4">
             Discover <br /> Amazing Videos From Creators!
-          </h1>
+          </h1> <br />
           <Button className="bg-primary hover:opacity-90 text-primary-foreground px-6 py-3 rounded-full">
             <Link href="/explore">Explore Now</Link>
           </Button>
@@ -27,5 +24,6 @@ export default function Home() {
           </div>
         </div>
       </section>
+    </>
   )
 }

@@ -5,9 +5,9 @@ import Navbar from "@/components/navbar";
 import Providers from "@/components/providers";
 
 export const metadata: Metadata = {
-  title: "Authentication Test - App.",
-  description: "Developed for Authentication Tesing.",
-};
+  title: "Clipo - Discover & Share Videos",
+  description: "Explore and share amazing videos from creators around the world on VidShare.",
+}
 
 export default function RootLayout({
   children,
