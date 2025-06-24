@@ -5,8 +5,8 @@ import axios from "axios"
 import toast from "react-hot-toast"
 import FileUpload from "@/components/video/fileUpload"
 import { Button } from "../ui/button"
-import { Input } from "../ui/input"
 import { upload } from "@imagekit/next"
+import { Heading, Text } from "lucide-react"
 
 export default function VideoUploadForm({ onUploaded }: { onUploaded?: () => void }) {
   const [title, setTitle] = useState("")
@@ -69,22 +69,29 @@ export default function VideoUploadForm({ onUploaded }: { onUploaded?: () => voi
 
   return (
     <form onSubmit={(e) => e.preventDefault()} className="mt-15 space-y-4 max-w-md mx-auto">
-      <Input
-        type="text"
-        placeholder="Video title"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-        className="w-full border rounded-lg p-4"
-        required
-      />
-      <Input
-        type="text"
-        placeholder="Video description"
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-        className="w-full border rounded-lg p-4"
-        required
-      />
+      <div tabIndex={0} className="flex items-center bg-background group border rounded-lg focus-within:ring-2 focus-within:ring-blue-500">
+        <input
+          type="text"
+          placeholder="Video title"
+          value={title}
+          required
+          onChange={(e) => setTitle(e.target.value)}
+          className="w-full p-2.5 rounded-lg bg-background outline-none"
+        />
+        <Heading className="text-foreground mr-3" size={18} />
+      </div>
+
+      <div tabIndex={0} className="flex items-center bg-background group border rounded-lg focus-within:ring-2 focus-within:ring-blue-500">
+        <input
+          type="text"
+          placeholder="Video description"
+          value={title}
+          required
+          onChange={(e) => setDescription(e.target.value)}
+          className="w-full p-2.5 rounded-lg bg-background outline-none"
+        />
+        <Text className="text-foreground mr-3" size={18} />
+      </div>
 
       <FileUpload
         fileType="video"
