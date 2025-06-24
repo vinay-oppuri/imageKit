@@ -69,7 +69,7 @@ const LoginPage = () => {
               className="w-full p-2.5 rounded-lg bg-background outline-none"
               required
             />
-            <Lock className="text-foreground mr-3" size={20}/>
+            <Lock className="text-foreground mr-3" size={18}/>
           </div>
 
           <div className="text-right text-sm text-blue-600 dark:text-blue-400">

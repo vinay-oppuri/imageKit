@@ -33,43 +33,40 @@ export default function ContactPage() {
         <p className="text-muted-foreground text-center">We&apos;d love to hear your feedback or help with any issues.</p>
 
         <form onSubmit={handleSubmit} className="space-y-5">
-          <div className="flex items-center gap-3">
-            <User className="text-muted-foreground" />
-            <Input
-              name="name"
+          <div tabIndex={0} className="flex items-center bg-background group border rounded-lg focus-within:ring-2 focus-within:ring-blue-500">
+            <input
               type="text"
-              placeholder="Your Name"
+              placeholder="Name"
               value={form.name}
               onChange={handleChange}
-              className='bg-background'
+              className="w-full p-2.5 rounded-lg bg-background outline-none"
               required
             />
+            <User className="text-foreground mr-3" size={20}/>
           </div>
 
-          <div className="flex items-center gap-3">
-            <Mail className="text-muted-foreground" />
-            <Input
-              name="email"
+          <div tabIndex={0} className="flex items-center bg-background group border rounded-lg focus-within:ring-2 focus-within:ring-blue-500">
+            <input
               type="email"
-              placeholder="you@example.com"
+              placeholder="Email"
               value={form.email}
               onChange={handleChange}
-              className='bg-background'
+              className="w-full p-2.5 rounded-lg bg-background outline-none"
               required
             />
+            <Mail className="text-foreground mr-3" size={18}/>
           </div>
 
-          <div className="flex items-start gap-3">
-            <MessageCircle className="mt-2 text-muted-foreground" />
-            <Textarea
-              name="message"
+          <div tabIndex={0} className="flex items-center bg-background group border rounded-lg focus-within:ring-2 focus-within:ring-blue-500">
+            <input
+              type="text"
               placeholder="Your message..."
-              rows={5}
               value={form.message}
               onChange={handleChange}
-              className='bg-background'
+              className="w-full p-2.5 rounded-lg bg-background outline-none"
               required
             />
+            <MessageCircle className="text-foreground mr-3" size={18}/>
           </div>
 
           <Button type="submit" className="w-full" disabled={loading}>

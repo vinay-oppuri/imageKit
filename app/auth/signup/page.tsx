@@ -75,7 +75,7 @@ const SignUpPage = () => {
               onChange={(e) => setEmail(e.target.value)}
               className="w-full p-2.5 rounded-lg bg-background outline-none"
             />
-            <Mail className="text-foreground mr-3" size={20}/>
+            <Mail className="text-foreground mr-3" size={18}/>
           </div>
 
           <div tabIndex={0} className="flex items-center bg-background group border rounded-lg focus-within:ring-2 focus-within:ring-blue-500">
@@ -87,7 +87,7 @@ const SignUpPage = () => {
               onChange={(e) => setPassword(e.target.value)}
               className="w-full p-2.5 rounded-lg bg-background outline-none"
             />
-            <Lock className="text-foreground mr-3" size={20}/>
+            <Lock className="text-foreground mr-3" size={18}/>
           </div>
 
           <div tabIndex={0} className="flex items-center bg-background group border rounded-lg focus-within:ring-2 focus-within:ring-blue-500">
@@ -99,7 +99,7 @@ const SignUpPage = () => {
               onChange={(e) => setConfirmPassword(e.target.value)}
               className="w-full p-2.5 rounded-lg bg-background outline-none"
             />
-            <Check className="text-foreground mr-3" size={20}/>
+            <Check className="text-foreground mr-3" size={18}/>
           </div>
 
           <button

@@ -36,7 +36,7 @@ const ResetPage = () => {
             onChange={(e) => setEmail(e.target.value)}
             className="w-full p-2.5 rounded-lg bg-background outline-none"
           />
-          <Mail className="text-foreground mr-3" size={20} />
+          <Mail className="text-foreground mr-3" size={18} />
         </div>
 
         <Button>Send Reset Link</Button>
