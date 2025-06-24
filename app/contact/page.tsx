@@ -27,13 +27,13 @@ export default function ContactPage() {
   }
 
   return (
-    <section className="flex items-center justify-center px-4 py-10 md:px-20 bg-background text-foreground">
+    <section className="flex items-center justify-center px-4 md:px-20 bg-background text-foreground mt-10">
       <div className="w-[95%] max-w-2xl bg-card shadow-lg rounded-2xl p-8 space-y-6">
         <h1 className="text-3xl font-bold text-center">Contact Us</h1>
         <p className="text-muted-foreground text-center">We&apos;d love to hear your feedback or help with any issues.</p>
 
         <form onSubmit={handleSubmit} className="space-y-5">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-3">
             <User className="text-muted-foreground" />
             <Input
               name="name"
@@ -41,11 +41,12 @@ export default function ContactPage() {
               placeholder="Your Name"
               value={form.name}
               onChange={handleChange}
+              className='bg-background'
               required
             />
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-3">
             <Mail className="text-muted-foreground" />
             <Input
               name="email"
@@ -53,11 +54,12 @@ export default function ContactPage() {
               placeholder="you@example.com"
               value={form.email}
               onChange={handleChange}
+              className='bg-background'
               required
             />
           </div>
 
-          <div className="flex items-start gap-2">
+          <div className="flex items-start gap-3">
             <MessageCircle className="mt-2 text-muted-foreground" />
             <Textarea
               name="message"
@@ -65,6 +67,7 @@ export default function ContactPage() {
               rows={5}
               value={form.message}
               onChange={handleChange}
+              className='bg-background'
               required
             />
           </div>
