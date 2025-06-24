@@ -27,7 +27,7 @@ export default function ContactPage() {
   }
 
   return (
-    <section className="min-h-screen flex items-center justify-center px-4 md:px-20 bg-background text-foreground">
+    <section className="flex items-center justify-center px-4 py-10 md:px-20 bg-background text-foreground">
       <div className="w-[95%] max-w-2xl bg-card shadow-lg rounded-2xl p-8 space-y-6">
         <h1 className="text-3xl font-bold text-center">Contact Us</h1>
         <p className="text-muted-foreground text-center">We&apos;d love to hear your feedback or help with any issues.</p>
