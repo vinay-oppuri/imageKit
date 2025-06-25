@@ -2,10 +2,10 @@
 
 import Link from 'next/link'
 import { useSession } from 'next-auth/react'
-import { Button } from './ui/button'
+import { Button } from '../ui/button'
 import Image from 'next/image'
-import MobileSidebar from './mobileSidebar'
-import BottomNav from './bottomNavbar'
+import MobileSidebar from '../navbar/mobileSidebar'
+import BottomNav from '../navbar/bottomNavbar'
 import { useTheme } from 'next-themes'
 import { Moon, Sun } from 'lucide-react'
 

@@ -1,9 +1,9 @@
 'use client'
 
-import { Compass, Users, Mail, UploadCloud, MessageSquare, Home } from 'lucide-react'
+import { Compass, Users, UploadCloud, Home } from 'lucide-react'
+import { cn } from '@/lib/utils'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
-import { cn } from '@/lib/utils'
 
 const navItems = [
   { href: '/', icon: Home, label: 'Home' },

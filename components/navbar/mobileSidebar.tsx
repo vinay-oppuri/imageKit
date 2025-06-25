@@ -1,13 +1,14 @@
 'use client'
 
-import { useState } from 'react'
+import Link from "next/link"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { Menu, X, Moon, Sun, User } from "lucide-react"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
-import Link from "next/link"
 import { useTheme } from "next-themes"
-import { useSession } from 'next-auth/react'
+import { signOut, useSession } from 'next-auth/react'
+import { useState } from "react"
+import Image from "next/image"
 
 const navItems = [
     { name: "Home", href: "/" },
@@ -20,11 +21,16 @@ const navItems = [
 
 export default function MobileSidebar() {
 
+    const [open, setOpen] = useState(false)
     const { setTheme, theme } = useTheme()
     const { data: session } = useSession()
 
+    const handleClick = () => {
+        setOpen(false)
+    }
+
     return (
-        <Sheet>
+        <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
                 <Button variant="ghost" size="icon">
                     <Menu />
@@ -33,23 +39,42 @@ export default function MobileSidebar() {
 
             <SheetContent side="left" className="w-[250px] p-4">
                 <div className="flex flex-col gap-6">
+                    <Link href='/' className="flex items-center justify-center p-4" onClick={handleClick}>
+                        <Image
+                            className="w-30 sm:w-36 md:w-44 lg:w-48 dark:invert"
+                            src="/logo.svg"
+                            alt="Logo"
+                            width={180}
+                            height={38}
+                            priority
+                        />
+                    </Link>
                     {session && (
-                        <div className="flex items-center gap-4">
-                            <Avatar className="w-12 h-12">
-                                <AvatarFallback>{session?.user?.image ? `${session?.user?.image}` : <User/>}</AvatarFallback>
-                            </Avatar>
-                            <div>
-                                <p className="font-medium">{session?.user?.name}</p>
-                                <p className="text-sm text-muted-foreground">Welcome to Clipo</p>
+                        <>
+                            <div className="flex items-center gap-4">
+
+                                <Avatar className="w-12 h-12">
+                                    <AvatarFallback>
+                                        <Link href='/auth/profile'>
+                                            {session?.user?.image ? `${session?.user?.image}` : <User />}
+                                        </Link>
+                                    </AvatarFallback>
+                                </Avatar>
+
+                                <div>
+                                    <p className="font-medium">{session?.user?.name}</p>
+                                    <p className="text-sm text-muted-foreground">Welcome to Clipo</p>
+                                </div>
                             </div>
-                        </div>
+                            <Button variant='destructive' className="w-full" onClick={() => signOut()}>Logout</Button>
+                        </>
                     )}
 
                     {!session && (
                         <>
                             <div className="flex items-center gap-3">
                                 <Avatar className="w-12 h-12">
-                                    <AvatarFallback><User className='' /></AvatarFallback>
+                                    <AvatarFallback><User /></AvatarFallback>
                                 </Avatar>
                                 <div>
                                     <p className="font-semibold text-base">Welcome Guest</p>
@@ -69,6 +94,7 @@ export default function MobileSidebar() {
                             <Link
                                 key={key}
                                 href={item.href}
+                                onClick={handleClick}
                                 className="hover:bg-muted rounded-md px-3 py-2 text-sm font-medium transition-colors"
                             >
                                 {item.name}
