@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { Menu, X, Moon, Sun, User, LogOut } from "lucide-react"
-import { Avatar, AvatarFallback } from "@/components/ui/avatar"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import { useTheme } from "next-themes"
 import { signOut, useSession } from 'next-auth/react'
@@ -54,9 +54,11 @@ export default function MobileSidebar() {
                             <div className="flex items-center gap-4">
 
                                 <Avatar className="w-12 h-12">
-                                    <AvatarFallback>
-                                        <Link href='/auth/profile' onClick={handleClick}>{session?.user?.image ?? <User/>}</Link>
-                                    </AvatarFallback>
+                                    {session?.user?.image ? (
+                                        <AvatarImage src={session?.user?.image} alt="User Avatar" />
+                                    ) : (
+                                        <AvatarFallback><User/></AvatarFallback>
+                                    )}
                                 </Avatar>
 
                                 <div>
@@ -64,7 +66,7 @@ export default function MobileSidebar() {
                                     <p className="text-sm text-muted-foreground">Welcome to Clipo</p>
                                 </div>
                             </div>
-                            <Button variant='destructive' className="w-full" onClick={() => signOut()}><LogOut/>Logout</Button>
+                            <Button variant='destructive' className="w-full" onClick={() => signOut()}><LogOut />Logout</Button>
                         </>
                     )}
 

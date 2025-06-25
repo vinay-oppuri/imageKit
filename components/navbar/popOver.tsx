@@ -6,7 +6,7 @@ import { useState } from "react"
 import { signOut, useSession } from "next-auth/react"
 import { ChevronDown, LogOut, User } from "lucide-react"
 import { Button } from "../ui/button"
-import { Avatar, AvatarFallback } from "../ui/avatar"
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar"
 
 export default function ProfilePopover() {
     const [open, setOpen] = useState(false)
@@ -40,9 +40,11 @@ export default function ProfilePopover() {
                 <div className="space-y-3">
                     <div className="flex flex-col items-center">
                         <Avatar className="w-12 h-12">
-                            <AvatarFallback>
-                                {session?.user?.image ?? <User />}
-                            </AvatarFallback>
+                            {session?.user?.image ? (
+                                <AvatarImage src={session?.user?.image} alt="User Avatar" />
+                            ) : (
+                                <AvatarFallback><User/></AvatarFallback>
+                            )}
                         </Avatar>
                         <h4 className="text-lg font-semibold">{session?.user?.name}</h4>
                         <div className="text-blue-600 text-sm">
@@ -50,7 +52,7 @@ export default function ProfilePopover() {
                         </div>
                     </div>
 
-                    <Button variant='destructive' className='w-full' onClick={() => signOut()}><LogOut/> Logout</Button>
+                    <Button variant='destructive' className='w-full' onClick={() => signOut()}><LogOut /> Logout</Button>
                 </div>
             </PopoverContent>
         </Popover>
