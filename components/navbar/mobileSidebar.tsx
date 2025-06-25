@@ -40,7 +40,7 @@ export default function MobileSidebar() {
 
             <SheetContent side="left" className="w-[250px] p-4">
                 <div className="flex flex-col gap-6">
-                    <Link href='/' className="flex items-center justify-center p-4" onClick={handleClick}>
+                    <Link href='/' className="flex items-center justify-center dark:invert p-4" onClick={handleClick}>
                         <Image
                             className="w-25"
                             src="/logo.svg"
