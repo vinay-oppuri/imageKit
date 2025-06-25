@@ -48,7 +48,7 @@ export default function ProfilePopover() {
                         </Avatar>
                         <h4 className="text-lg font-semibold">{session?.user?.name}</h4>
                         <div className="text-blue-600 text-sm">
-                            <Link href='/auth/profile'>My Profile</Link>
+                            <Link href='/auth/profile' onClick={()=>setOpen(false)}>My Profile</Link>
                         </div>
                     </div>
 
