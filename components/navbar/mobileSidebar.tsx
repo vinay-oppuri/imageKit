@@ -54,11 +54,13 @@ export default function MobileSidebar() {
                             <div className="flex items-center gap-4">
 
                                 <Avatar className="w-12 h-12">
-                                    {session?.user?.image ? (
-                                        <AvatarImage src={session?.user?.image} alt="User Avatar" />
-                                    ) : (
-                                        <AvatarFallback><User/></AvatarFallback>
-                                    )}
+                                    <Link href='/auth/profile'>
+                                        {session?.user?.image ? (
+                                            <AvatarImage src={session?.user?.image} alt="User Avatar" />
+                                        ) : (
+                                            <AvatarFallback><User /></AvatarFallback>
+                                        )}
+                                    </Link>
                                 </Avatar>
 
                                 <div>
