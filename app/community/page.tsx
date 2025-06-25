@@ -25,7 +25,7 @@ const Community = () => {
                 <h2 className="text-3xl font-bold mb-4">Start Creating Today</h2>
                 <p className="mb-6">Join thousands of creators sharing their stories and skills.</p>
                 <Button className="bg-background text-primary font-semibold px-6 py-3 rounded-full hover:bg-background/90">
-                    <Link href="/signup">Join Now</Link>
+                    <Link href="/auth/signup">Join Now</Link>
                 </Button>
             </section>
         </>
