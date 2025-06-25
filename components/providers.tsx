@@ -3,6 +3,7 @@
 import { SessionProvider } from 'next-auth/react';
 import { IKContext } from 'imagekitio-react';
 import { ThemeProvider as NextThemesProvider } from 'next-themes';
+import ThemeToaster from './themeToaster';
 
 interface ProvidersProps {
   children: React.ReactNode;
@@ -25,6 +26,7 @@ export default function Providers({ children }: ProvidersProps) {
           disableTransitionOnChange
         >
           {children}
+          <ThemeToaster/>
         </NextThemesProvider>
       </IKContext>
     </SessionProvider>

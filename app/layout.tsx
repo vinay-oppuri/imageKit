@@ -21,19 +21,6 @@ export default function RootLayout({
           <Navbar />
           {children}
         </Providers>
-
-        <Toaster
-          position="top-right"
-          toastOptions={{
-            style: {
-              background: "#1a202c",
-              color: "#fefefe",
-              fontSize: "14px",
-              borderRadius: "8px",
-              padding: "16px",
-            },
-          }}
-        />
       </body>
     </html>
   );

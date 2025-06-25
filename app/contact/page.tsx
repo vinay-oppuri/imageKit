@@ -4,6 +4,8 @@ import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Mail, User, MessageCircle } from 'lucide-react'
 import toast from 'react-hot-toast'
+import { NextResponse } from 'next/server'
+import axios from 'axios'
 
 export default function ContactPage() {
   const [form, setForm] = useState({ name: '', email: '', message: '' })
@@ -16,12 +18,21 @@ export default function ContactPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setLoading(true)
-    // Simulate submission
-    setTimeout(() => {
-      toast.success('Message sent!')
-      setForm({ name: '', email: '', message: '' })
+
+    try {
+      const req = await axios.post('/api/contact', form)
+      if (req.status === 200) {
+        toast.success('Message sent')
+        setForm({ name: '', email: '', message: '' })
+      } else {
+        toast.error('Failed to send message')
+      }
+
+    } catch (error: any) {
+      return NextResponse.json({ error: 'Failed' })
+    } finally {
       setLoading(false)
-    }, 1500)
+    }
   }
 
   return (
@@ -33,6 +44,7 @@ export default function ContactPage() {
         <form onSubmit={handleSubmit} className="space-y-5">
           <div tabIndex={0} className="flex items-center bg-background group border rounded-lg focus-within:ring-2 focus-within:ring-blue-500">
             <input
+              name='name'
               type="text"
               placeholder="Name"
               value={form.name}
@@ -40,11 +52,12 @@ export default function ContactPage() {
               className="w-full p-2.5 rounded-lg bg-background outline-none"
               required
             />
-            <User className="text-foreground mr-3" size={20}/>
+            <User className="text-foreground mr-3" size={20} />
           </div>
 
           <div tabIndex={0} className="flex items-center bg-background group border rounded-lg focus-within:ring-2 focus-within:ring-blue-500">
             <input
+              name='email'
               type="email"
               placeholder="Email"
               value={form.email}
@@ -52,11 +65,12 @@ export default function ContactPage() {
               className="w-full p-2.5 rounded-lg bg-background outline-none"
               required
             />
-            <Mail className="text-foreground mr-3" size={18}/>
+            <Mail className="text-foreground mr-3" size={18} />
           </div>
 
           <div tabIndex={0} className="flex items-center bg-background group border rounded-lg focus-within:ring-2 focus-within:ring-blue-500">
             <input
+              name='message'
               type="text"
               placeholder="Your message..."
               value={form.message}
@@ -64,7 +78,7 @@ export default function ContactPage() {
               className="w-full p-2.5 rounded-lg bg-background outline-none"
               required
             />
-            <MessageCircle className="text-foreground mr-3" size={18}/>
+            <MessageCircle className="text-foreground mr-3" size={18} />
           </div>
 
           <Button type="submit" className="w-full" disabled={loading}>
