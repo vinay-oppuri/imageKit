@@ -42,7 +42,7 @@ export default function MobileSidebar() {
                 <div className="flex flex-col gap-6">
                     <Link href='/' className="flex items-center justify-center p-4" onClick={handleClick}>
                         <Image
-                            className="w-30 sm:w-36 md:w-44 lg:w-48 dark:invert"
+                            className="w-25"
                             src="/logo.svg"
                             alt="Logo"
                             width={180}
