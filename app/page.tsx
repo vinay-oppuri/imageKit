@@ -26,7 +26,7 @@ export default function Home() {
       </section>
 
       {/* Features Section */}
-      <section className="px-4 md:px-20 py-8 md:py-12 text-center md:text-left">
+      <section className="px-4 md:px-20 py-8 md:py-12 text-center md:text-left mb-20 md:mb-10">
         <h2 className="text-3xl font-bold mb-6">Why Join Us?</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="bg-muted p-6 rounded-xl">
