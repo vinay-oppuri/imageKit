@@ -2,13 +2,14 @@
 
 import Link from "next/link"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { Menu, X, Moon, Sun, User } from "lucide-react"
+import { Menu, X, Moon, Sun, User, LogOut } from "lucide-react"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import { useTheme } from "next-themes"
 import { signOut, useSession } from 'next-auth/react'
 import { useState } from "react"
 import Image from "next/image"
+import ProfilePopover from "./popOver"
 
 const navItems = [
     { name: "Home", href: "/" },
@@ -55,9 +56,7 @@ export default function MobileSidebar() {
 
                                 <Avatar className="w-12 h-12">
                                     <AvatarFallback>
-                                        <Link href='/auth/profile'>
-                                            {session?.user?.image ? `${session?.user?.image}` : <User />}
-                                        </Link>
+                                        <Link href='/auth/profile' onClick={handleClick}>{session?.user?.image ?? <User/>}</Link>
                                     </AvatarFallback>
                                 </Avatar>
 
@@ -66,7 +65,7 @@ export default function MobileSidebar() {
                                     <p className="text-sm text-muted-foreground">Welcome to Clipo</p>
                                 </div>
                             </div>
-                            <Button variant='destructive' className="w-full" onClick={() => signOut()}>Logout</Button>
+                            <Button variant='destructive' className="w-full" onClick={() => signOut()}><LogOut/>Logout</Button>
                         </>
                     )}
 
@@ -82,7 +81,7 @@ export default function MobileSidebar() {
                                 </div>
 
                             </div>
-                            <Link href="/auth/login">
+                            <Link href="/auth/login" onClick={handleClick}>
                                 <Button className="w-full">Sign In</Button>
                             </Link>
                         </>

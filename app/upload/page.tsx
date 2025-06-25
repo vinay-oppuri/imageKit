@@ -40,7 +40,7 @@ export default function UploadPage() {
         </div>
       </section>
 
-      <div className="">
+      <div>
         <h1 className="text-center text-2xl font-bold mt-1 -mb-5">Upload Here</h1>
         <VideoUploadForm />
       </div>
