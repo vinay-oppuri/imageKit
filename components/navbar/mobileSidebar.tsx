@@ -9,7 +9,6 @@ import { useTheme } from "next-themes"
 import { signOut, useSession } from 'next-auth/react'
 import { useState } from "react"
 import Image from "next/image"
-import ProfilePopover from "./popOver"
 
 const navItems = [
     { name: "Home", href: "/" },
