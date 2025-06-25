@@ -54,7 +54,7 @@ export default function MobileSidebar() {
                             <div className="flex items-center gap-4">
 
                                 <Avatar className="w-12 h-12">
-                                    <Link href='/auth/profile'>
+                                    <Link href='/auth/profile' onClick={handleClick}>
                                         {session?.user?.image ? (
                                             <AvatarImage src={session?.user?.image} alt="User Avatar" />
                                         ) : (
