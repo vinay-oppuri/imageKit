@@ -22,7 +22,7 @@ const ProfileClient = () => {
 
   return (
     <div className="flex items-center justify-center bg-background text-foreground p-4 mt-20 md:mt-24">
-      <div className="w-full max-w-md p-6 rounded-xl border border-border bg-card shadow-md space-y-4 text-center">
+      <div className="w-[95%] max-w-md p-6 rounded-xl border border-border bg-card shadow-md space-y-4 text-center">
         <div className="flex justify-center">
           <Avatar className="w-20 h-20">
             {session?.user?.image ? (
