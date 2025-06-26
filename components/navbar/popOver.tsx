@@ -17,7 +17,6 @@ export default function ProfilePopover() {
             <PopoverTrigger
                 onMouseEnter={() => setOpen(true)}
                 onMouseLeave={() => setOpen(false)}
-                // onClick={() => setOpen((prev) => !prev)}
                 className="cursor-pointer"
             >
                 {session?.user?.name ? (

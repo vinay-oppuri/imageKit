@@ -6,6 +6,7 @@ import { Mail, User, MessageCircle } from 'lucide-react'
 import toast from 'react-hot-toast'
 import { NextResponse } from 'next/server'
 import axios from 'axios'
+import { Textarea } from '@/components/ui/textarea'
 
 export default function ContactPage() {
   const [form, setForm] = useState({ name: '', email: '', message: '' })
@@ -69,13 +70,11 @@ export default function ContactPage() {
           </div>
 
           <div tabIndex={0} className="flex items-center bg-background group border rounded-lg focus-within:ring-2 focus-within:ring-blue-500">
-            <input
+            <Textarea
               name='message'
-              type="text"
               placeholder="Your message..."
               value={form.message}
               onChange={handleChange}
-              className="w-full p-2.5 rounded-lg bg-background outline-none"
               required
             />
             <MessageCircle className="text-foreground mr-3" size={18} />

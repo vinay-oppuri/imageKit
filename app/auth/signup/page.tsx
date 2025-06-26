@@ -7,6 +7,7 @@ import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { useSession } from 'next-auth/react'
 import { User, Mail, Lock, Check } from 'lucide-react'
+import { Input } from '@/components/ui/input'
 
 const SignUpPage = () => {
   const router = useRouter()

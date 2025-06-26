@@ -42,7 +42,7 @@ const Explore = () => {
             </div>
             <div className="p-4">
               <h3 className="font-semibold text-lg line-clamp-1">{video.title}</h3>
-              <p className="text-sm text-muted-foreground line-clamp-1">by Someone</p>
+              <p className="text-sm text-muted-foreground line-clamp-1">{''}</p>
               <span className="text-primary font-bold">★</span>
             </div>
           </div>

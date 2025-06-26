@@ -1,8 +1,10 @@
 import { Button } from '@/components/ui/button'
+import { CommunityCreate, CommunityJoin } from '@/components/dialogs'
 import Link from 'next/link'
 import React from 'react'
 
 const Community = () => {
+
     return (
         <>
             <section className="flex flex-col md:flex-row justify-between items-center px-4 md:px-20 py-6 md:py-10 bg-muted rounded-xl mx-4 md:mx-20 mt-8 md:mt-10 mb-10">
@@ -24,9 +26,10 @@ const Community = () => {
             <section className="px-4 md:px-20 py-12 bg-primary text-primary-foreground text-center rounded-xl mx-4 md:mx-20 mb-25">
                 <h2 className="text-3xl font-bold mb-4">Start Creating Today</h2>
                 <p className="mb-6">Join thousands of creators sharing their stories and skills.</p>
-                <Button className="bg-background text-primary font-semibold px-6 py-3 rounded-full hover:bg-background/90">
-                    <Link href="/auth/signup">Join Now</Link>
-                </Button>
+                <div className='flex flex-row justify-center gap-3'>
+                    <CommunityCreate/>
+                    <CommunityJoin/>
+                </div>
             </section>
         </>
     )
