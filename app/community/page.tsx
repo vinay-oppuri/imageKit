@@ -29,7 +29,6 @@ const Community = () => {
                 <p className="mb-6">Join thousands of creators sharing their stories and skills.</p>
                 <div className='flex flex-row justify-center gap-3'>
                     <CommunityCreate/>
-                    <CommunityJoin/>
                 </div>
             </section>
             <Communities/>

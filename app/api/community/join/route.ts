@@ -26,7 +26,7 @@ export async function POST(req: NextRequest) {
     // ✅ Add user to members if not already
     const updated = await Community.findOneAndUpdate(
       { name },
-      { $addToSet: { members: user } },
+      { $addToSet: { members: user._id } },
       { new: true }
     );
 

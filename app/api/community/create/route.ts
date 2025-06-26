@@ -17,7 +17,7 @@ export async function POST(req: NextRequest) {
     const community = await Community.create({
       name,
       description,
-      admin, 
+      admin: admin._id,
       members: []
     });
 

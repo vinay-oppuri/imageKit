@@ -5,7 +5,7 @@ export interface IUser {
     username: string
     email: string
     password: string
-    _id?: mongoose.Types.ObjectId | string
+    _id?: mongoose.Types.ObjectId
     resetToken: string
     resetTokenExpiry: Date
     createdAt?: Date
