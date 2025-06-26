@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button'
-import { CommunityCreate, CommunityJoin } from '@/components/dialogs'
+import { CommunityCreate } from '@/components/dialogs'
 import Link from 'next/link'
 import React from 'react'
 import { Communities } from '@/components/communites'

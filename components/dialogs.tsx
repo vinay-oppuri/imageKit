@@ -15,6 +15,8 @@ import toast from 'react-hot-toast'
 import { NextResponse } from 'next/server'
 
 export const CommunityCreate = () => {
+
+    const [open, setOpen] = useState(false)
     const [form, setForm] = useState({
         name: '',
         description: '',
@@ -32,6 +34,7 @@ export const CommunityCreate = () => {
             if (req.data.message) {
                 toast.success(req.data.message)
                 setForm({ name: '', description: ''})
+                setOpen(false)
             } else  {
                 toast.error(req.data.error)
             } 
@@ -43,7 +46,7 @@ export const CommunityCreate = () => {
     }
 
     return (
-        <Dialog>
+        <Dialog open={open} onOpenChange={setOpen}>
             <form>
                 <DialogTrigger asChild>
                     <Button variant='outline' className='text-primary hover:text-primary'>Create Community</Button>
@@ -70,54 +73,6 @@ export const CommunityCreate = () => {
                         <Button onClick={handleSubmit}>Create</Button>
                         <div className='flex justify-between'>
                             <p>Want to join a community</p> <p>Join</p>
-                        </div>
-                    </div>
-                </DialogContent>
-            </form>
-        </Dialog>
-    )
-}
-
-export const CommunityJoin = () => {
-    const [name, setName] = useState('')
-
-    const handleSubmit = async () => {
-
-        try {
-            const req = await axios.post('/api/community/join', { name })
-
-            if (req.data.message) {
-                toast.success(req.data.message)
-                setName('')
-            } else if (req.data.error) {
-                toast.error(req.data.error)
-            } else {
-                toast.error('Failed to join community')
-            }
-        } catch (error: any) {
-            NextResponse.json({ error: 'Something went wrong' })
-        }
-    }
-
-    return (
-        <Dialog>
-            <form>
-                <DialogTrigger asChild>
-                    <Button variant='outline' className='text-primary hover:text-primary'>Join Community</Button>
-                </DialogTrigger>
-                <DialogContent className="sm:max-w-[425px]">
-                    <DialogHeader>
-                        <DialogTitle>Join Community</DialogTitle>
-                    </DialogHeader>
-                    <div className='flex flex-col gap-3'>
-                        <div className="flex flex-col gap-2">
-                            <p className='font-semibold'>Name</p>
-                            <Input value={name} placeholder='Community Name' onChange={(e) => setName(e.target.value)} />
-                        </div>
-                        <br />
-                        <Button onClick={handleSubmit}>Join</Button>
-                        <div className='flex justify-between'>
-                            <p>Want to create a community</p> <p>Create</p>
                         </div>
                     </div>
                 </DialogContent>
