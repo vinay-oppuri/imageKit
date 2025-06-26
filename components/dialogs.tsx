@@ -49,7 +49,7 @@ export const CommunityCreate = () => {
         <Dialog open={open} onOpenChange={setOpen}>
             <form>
                 <DialogTrigger asChild>
-                    <Button variant='outline' className='text-primary hover:text-primary'>Create Community</Button>
+                    <Button variant='outline' className='text-primary hover:text-primary dark:bg-muted dark:hover:bg-popover'>Create Community</Button>
                 </DialogTrigger>
                 <DialogContent className="sm:max-w-[425px]">
                     <DialogHeader>

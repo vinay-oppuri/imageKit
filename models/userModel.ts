@@ -2,9 +2,10 @@ import mongoose, { Schema, model, models } from "mongoose";
 import bcrypt from "bcryptjs";
 
 export interface IUser {
-    username: string
+    name?: string
     email: string
-    password: string
+    password?: string
+    image?: string
     _id?: mongoose.Types.ObjectId
     resetToken: string
     resetTokenExpiry: Date
@@ -14,9 +15,10 @@ export interface IUser {
 
 const userSchema = new Schema<IUser>(
     {
-        username: { type: String, required: true },
+        name: { type: String },
         email: { type: String, required: true, unique: true },
-        password: { type: String, required: true },
+        password: { type: String },
+        image: {type: String},
         resetToken: { type: String, default: null },
         resetTokenExpiry: { type: Date, default: null }
     },
@@ -25,12 +27,19 @@ const userSchema = new Schema<IUser>(
     }
 )
 
-userSchema.pre('save', async function (next) {
-    if (this.isModified('password')) {
-        this.password = await bcrypt.hash(this.password, 10)
+userSchema.pre("save", async function (next) {
+    if (!this.isModified("password") || !this.password) {
+        return next();
     }
-    next()
-})
+
+    try {
+        this.password = await bcrypt.hash(this.password, 10);
+        next();
+    } catch (err) {
+        next(err as any);
+    }
+});
+
 
 const User = models?.User || model<IUser>('User', userSchema)
 export default User

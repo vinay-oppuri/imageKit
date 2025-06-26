@@ -20,7 +20,7 @@ interface Community {
   name: string
   description?: string
   admin: {
-    username: string
+    name: string
     email: string
     image: string
   }
@@ -75,7 +75,7 @@ export function Communities() {
                     <div className="flex flex-col text-center gap-3">
                       <h3 className="text-lg font-semibold">{community.name}</h3>
                       <p className="text-sm text-muted-foreground">{community.description || "No description"}</p>
-                      <p className="text-xs text-muted-foreground">Created by: {community.admin.username}</p>
+                      <p className="text-xs text-muted-foreground">Created by: {community.admin.name}</p>
                       <p className="text-xs text-muted-foreground">Email: {community.admin.email}</p>
                     </div>
                       <Button className="w-full" onClick={() => handleClick(community.name)}>Join</Button>

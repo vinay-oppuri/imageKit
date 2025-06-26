@@ -7,7 +7,7 @@ export async function GET(req: NextRequest) {
     await connectDB();
 
     const communities = await Community.find()
-    .populate('admin', 'username email image')
+    .populate('admin', 'name email image')
     .lean();
 
     return NextResponse.json(communities);

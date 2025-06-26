@@ -7,6 +7,7 @@ import CredentialsProvider from "next-auth/providers/credentials"
 import bcrypt from "bcryptjs"
 import connectDB from "./dbConfig"
 import User from "@/models/userModel"
+import { NextResponse } from "next/server"
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -72,19 +73,37 @@ export const authOptions: NextAuthOptions = {
     },
 
     async signIn({ user }) {
-      await connectDB()
-      const existingUser = await User.findOne({ email: user.email })
+      try {
+        console.log("🔐 signIn callback triggered");
+        await connectDB();
+        console.log("✅ DB connected");
 
-      if (!existingUser) {
-        await User.create({
-          name: user.name,
-          email: user.email,
-          image: user.image
-        })
+        if (!user.email) {
+          console.error("❌ Missing user.email");
+          return false;
+        }
+
+        const existingUser = await User.findOne({ email: user.email });
+        console.log("👤 Existing user:", existingUser);
+
+        if (!existingUser) {
+          const newUser = await User.create({
+            name: user.name || user.email.split("@")[0],
+            email: user.email,
+            image: user.image || "",
+          });
+          console.log("✅ New user created:", newUser);
+        }
+
+        return true;
+
+      } catch (error) {
+        console.error("🔥 Error in signIn callback:", error);
+        return false;
       }
-
-      return true
     }
+
+
   },
 
   pages: {

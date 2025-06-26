@@ -19,7 +19,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Community not found" });
     }
 
-    if (community.admin === user) {
+    if (community.admin._id.equals(user._id)) {
       return NextResponse.json({ error: "Admin cannot join their own community" });
     }
 
