@@ -85,7 +85,7 @@ export default function VideoUploadForm({ onUploaded }: { onUploaded?: () => voi
         <input
           type="text"
           placeholder="Video description"
-          value={title}
+          value={description}
           required
           onChange={(e) => setDescription(e.target.value)}
           className="w-full p-2.5 rounded-lg bg-background outline-none"
