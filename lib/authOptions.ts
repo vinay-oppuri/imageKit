@@ -70,6 +70,21 @@ export const authOptions: NextAuthOptions = {
       }
       return session
     },
+
+    async signIn({ user }) {
+      await connectDB()
+      const existingUser = await User.findOne({ email: user.email })
+
+      if (!existingUser) {
+        await User.create({
+          name: user.name,
+          email: user.email,
+          image: user.image
+        })
+      }
+
+      return true
+    }
   },
 
   pages: {

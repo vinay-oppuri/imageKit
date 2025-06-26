@@ -78,6 +78,8 @@ export function Communities() {
                       <p className="text-xs text-muted-foreground">Created by: {community.admin.username}</p>
                       <p className="text-xs text-muted-foreground">Email: {community.admin.email}</p>
                     </div>
+                      <Button className="w-full" onClick={() => handleClick(community.name)}>Join</Button>
+
                   </CardContent>
 
                 </Card>
