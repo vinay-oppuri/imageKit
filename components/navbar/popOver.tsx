@@ -33,38 +33,29 @@ export default function ProfilePopover() {
       <PopoverContent
         onMouseEnter={() => setOpen(true)}
         onMouseLeave={() => setOpen(false)}
-        className="w-56 p-4"
+        className="w-60 border border-white/20 dark:border-zinc-800/30 bg-white/10 dark:bg-zinc-900/40 backdrop-blur-md shadow-xl rounded-xl p-4"
       >
-        <div className="space-y-4 text-center">
-          <Avatar className="w-12 h-12 mx-auto">
-            {avatarSrc ? (
-              <AvatarImage src={avatarSrc} alt="User Avatar" />
-            ) : (
-              <AvatarFallback><User size={20} /></AvatarFallback>
-            )}
-          </Avatar>
-
-          <div>
-            <h4 className="text-lg font-semibold">{name}</h4>
-            <Link
-              href="/auth/profile"
-              onClick={() => setOpen(false)}
-              className="text-blue-600 text-sm hover:underline"
-            >
-              My Profile
-            </Link>
+        <div className="space-y-3">
+          <div className="flex flex-col items-center">
+            <Avatar className="w-12 h-12">
+              {session?.user?.image ? (
+                <AvatarImage src={session?.user?.image} alt="User Avatar" />
+              ) : (
+                <AvatarFallback><User /></AvatarFallback>
+              )}
+            </Avatar>
+            <h4 className="text-lg font-semibold">{session?.user?.name}</h4>
+            <div className="text-blue-600 text-sm">
+              <Link href='/auth/profile' onClick={() => setOpen(false)}>My Profile</Link>
+            </div>
           </div>
 
-          <Button
-            variant="destructive"
-            className="w-full flex gap-2 justify-center items-center"
-            onClick={() => signOut()}
-          >
-            <LogOut size={16} />
-            Logout
+          <Button variant='destructive' className='w-full'>
+            <LogOut className="mr-2 h-4 w-4" /> Logout
           </Button>
         </div>
       </PopoverContent>
+
     </Popover>
   )
 }
