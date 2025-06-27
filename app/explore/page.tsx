@@ -23,7 +23,7 @@ export default function Explore() {
   if (loading) return <p className="text-center py-10">Loading popular videos...</p>
 
   return (
-    <section className="px-4 md:px-20 py-12 mb-10 text-foreground">
+    <section className="px-4 md:px-20 py-12 text-foreground mb-20 md:mb-10">
       <motion.h2
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}

@@ -78,7 +78,7 @@ export function Communities() {
       <Carousel className="w-full max-w-4xl px-4">
         <CarouselContent className="-ml-1">
           {communities.map((community, index) => (
-            <CarouselItem key={index} className="pl-1 md:basis-1/2 lg:basis-1/3">
+            <CarouselItem key={index} className="pl-1 !w-full sm:!w-1/2 lg:!w-1/3">
               <div className="p-2">
                 <Card className="h-full">
                   <CardContent className="flex flex-col items-center justify-center gap-4 p-6">

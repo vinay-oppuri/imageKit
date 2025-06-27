@@ -1,39 +1,34 @@
 'use client'
 
 import Link from 'next/link'
-import Image from 'next/image'
 import { useSession } from 'next-auth/react'
+import { Button } from '../ui/button'
+import Image from 'next/image'
+import MobileSidebar from '../navbar/mobileSidebar'
+import BottomNav from '../navbar/bottomNavbar'
 import { useTheme } from 'next-themes'
 import { Moon, Sun } from 'lucide-react'
-
-import { Button } from '@/components/ui/button'
-import MobileSidebar from '@/components/navbar/mobileSidebar'
-import BottomNav from '@/components/navbar/bottomNavbar'
 import ProfilePopover from './popOver'
 
-export default function Navbar() {
+const Navbar = () => {
   const { data: session } = useSession()
   const { theme, setTheme } = useTheme()
 
-  const toggleTheme = () => setTheme(theme === 'dark' ? 'light' : 'dark')
-
   return (
     <>
-      <nav className="bg-background sticky top-0 inset-x-0 z-50 shadow-sm border-b border-border px-4 sm:px-8 md:px-20 py-4 flex items-center justify-between">
-        {/* Logo */}
-        <Link href="/" className="flex items-center">
+      <nav className="sticky top-0 left-0 right-0 z-50 px-4 py-5 flex items-center justify-between backdrop-blur-md bg-white/30 dark:bg-zinc-900/30 border-b border-white/20 dark:border-zinc-800/30">
+        <Link href="/" className="text-lg font-semibold flex items-center">
           <Image
+            className="w-25 sm:w-30 md:w-35 lg:w-40 dark:invert md:ml-40"
             src="/logo.svg"
             alt="Logo"
             width={180}
             height={38}
             priority
-            className="dark:invert"
           />
         </Link>
 
-        {/* Desktop Navigation Links */}
-        <div className="hidden md:flex items-center gap-6 text-sm font-medium">
+        <div className="hidden md:flex items-center gap-4">
           <Link href="/">Home</Link>
           <Link href="/explore">Explore</Link>
           <Link href="/upload">Upload</Link>
@@ -41,8 +36,7 @@ export default function Navbar() {
           <Link href="/contact">Contact</Link>
         </div>
 
-        {/* Right Side Actions */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 md:mr-40">
           {session ? (
             <ProfilePopover />
           ) : (
@@ -51,26 +45,24 @@ export default function Navbar() {
             </Button>
           )}
 
-          {/* Theme toggle - only visible on desktop */}
           <Button
             variant="ghost"
             size="icon"
             className="hidden md:flex"
-            onClick={toggleTheme}
-            aria-label="Toggle Theme"
+            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
           >
-            {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+            {theme === 'dark' ? <Sun /> : <Moon />}
           </Button>
 
-          {/* Mobile Menu */}
           <div className="md:hidden">
             <MobileSidebar />
           </div>
         </div>
       </nav>
 
-      {/* Bottom navigation for mobile */}
       <BottomNav />
     </>
   )
 }
+
+export default Navbar

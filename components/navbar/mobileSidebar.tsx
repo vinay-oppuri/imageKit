@@ -34,84 +34,98 @@ export default function MobileSidebar() {
         </Button>
       </SheetTrigger>
 
-      <SheetContent side="left" className="w-[250px] p-4 space-y-6">
-        {/* Logo */}
-        <Link href="/" onClick={handleClick} className="flex justify-center dark:invert">
-          <Image
-            src="/logo.svg"
-            alt="Logo"
-            width={180}
-            height={38}
-            priority
-          />
-        </Link>
-
-        {/* User Info */}
-        <div className="flex items-center gap-4">
-          <Avatar className="w-12 h-12">
-            <Link href="/auth/profile" onClick={handleClick}>
-              {session?.user?.image ? (
-                <AvatarImage src={session.user.image} alt="User Avatar" />
-              ) : (
-                <AvatarFallback><User /></AvatarFallback>
-              )}
-            </Link>
-          </Avatar>
-          <div>
-            <p className="font-medium">
-              {session?.user?.name || "Guest"}
-            </p>
-            <p className="text-sm text-muted-foreground">
-              {session ? "Welcome to Clipo" : "Sign in to explore more"}
-            </p>
-          </div>
-        </div>
-
-        {/* Action Button */}
-        {session ? (
-          <Button
-            variant="destructive"
-            className="w-full"
-            onClick={() => signOut()}
+      <SheetContent
+        side="left"
+        className="w-[250px] p-4 bg-white/30 dark:bg-zinc-900/30 backdrop-blur-md border-r border-white/20 dark:border-zinc-800/30 shadow-xl rounded-r-xl"
+      >
+        <div className="flex flex-col gap-6">
+          {/* Logo */}
+          <Link
+            href="/"
+            className="flex items-center justify-center dark:invert p-4"
+            onClick={handleClick}
           >
-            <LogOut className="mr-2 h-4 w-4" />
-            Logout
-          </Button>
-        ) : (
-          <Link href="/auth/login" onClick={handleClick} className="w-full">
-            <Button className="w-full">Sign In</Button>
+            <Image
+              className="w-25"
+              src="/logo.svg"
+              alt="Logo"
+              width={180}
+              height={38}
+              priority
+            />
           </Link>
-        )}
 
-        {/* Navigation Items */}
-        <nav className="flex flex-col gap-2">
-          {navItems.map((item) => (
-            <Link
-              key={item.name}
-              href={item.href}
-              onClick={handleClick}
-              className="hover:bg-muted rounded-md px-3 py-2 text-sm font-medium transition-colors"
+          {/* User Info */}
+          {session ? (
+            <>
+              <div className="flex items-center gap-4">
+                <Avatar className="w-12 h-12">
+                  <Link href="/auth/profile" onClick={handleClick}>
+                    {session.user?.image ? (
+                      <AvatarImage src={session.user.image} alt="User Avatar" />
+                    ) : (
+                      <AvatarFallback><User /></AvatarFallback>
+                    )}
+                  </Link>
+                </Avatar>
+
+                <div>
+                  <p className="font-medium">{session.user.name}</p>
+                  <p className="text-sm text-muted-foreground">Welcome to Clipo</p>
+                </div>
+              </div>
+
+              <Button
+                variant="destructive"
+                className="w-full"
+                onClick={() => signOut()}
+              >
+                <LogOut className="mr-2 h-4 w-4" /> Logout
+              </Button>
+            </>
+          ) : (
+            <>
+              <div className="flex items-center gap-3">
+                <Avatar className="w-12 h-12">
+                  <AvatarFallback><User /></AvatarFallback>
+                </Avatar>
+                <div>
+                  <p className="font-semibold text-base">Welcome Guest</p>
+                  <p className="text-sm text-muted-foreground">Sign in to explore more</p>
+                </div>
+              </div>
+
+              <Link href="/auth/login" onClick={handleClick}>
+                <Button className="w-full">Sign In</Button>
+              </Link>
+            </>
+          )}
+
+          {/* Navigation */}
+          <nav className="flex flex-col gap-2">
+            {navItems.map((item, key) => (
+              <Link
+                key={key}
+                href={item.href}
+                onClick={handleClick}
+                className="hover:bg-muted rounded-md px-3 py-2 text-sm font-medium transition-colors"
+              >
+                {item.name}
+              </Link>
+            ))}
+          </nav>
+
+          {/* Theme Toggle */}
+          <div className="flex items-center justify-between pt-6 border-t border-border">
+            <span className="font-semibold">Theme</span>
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
             >
-              {item.name}
-            </Link>
-          ))}
-        </nav>
-
-        {/* Upgrade CTA */}
-        <Button variant="secondary" className="w-full mt-6">
-          Upgrade to Pro
-        </Button>
-
-        {/* Theme Toggle */}
-        <div className="flex items-center justify-between pt-4 border-t border-border">
-          <span className="font-semibold">Theme</span>
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-          >
-            {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
-          </Button>
+              {theme === "dark" ? <Sun /> : <Moon />}
+            </Button>
+          </div>
         </div>
       </SheetContent>
     </Sheet>
