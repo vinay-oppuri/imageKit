@@ -7,41 +7,18 @@ import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { useSession } from 'next-auth/react'
 import { User, Mail, Lock, Check } from 'lucide-react'
-import { Input } from '@/components/ui/input'
+import { Button } from '@/components/ui/button'
+import { motion } from 'framer-motion'
 
-const SignUpPage = () => {
+export default function SignUpPage() {
   const router = useRouter()
+  const { data: session } = useSession()
+
   const [username, setUsername] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
-
-  const onSignUp = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-
-    if (password !== confirmPassword) {
-      toast.error('Passwords do not match', { duration: 4000 })
-      return
-    }
-
-    try {
-      const res = await axios.post('/api/auth/signup', {
-        username,
-        email,
-        password,
-      })
-
-      toast.success(res.data.message || 'Registered successfully', {
-        duration: 4000,
-      })
-
-      router.replace('/auth/login')
-    } catch {
-      toast.error('Registration Failed', { duration: 4000 })
-    }
-  }
-
-  const { data: session } = useSession()
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     if (session?.user) {
@@ -49,77 +26,102 @@ const SignUpPage = () => {
     }
   }, [session, router])
 
+  const onSignUp = async (e: React.FormEvent) => {
+    e.preventDefault()
+
+    if (password !== confirmPassword) {
+      toast.error('Passwords do not match')
+      return
+    }
+
+    setLoading(true)
+    try {
+      const res = await axios.post('/api/auth/signup', {
+        username,
+        email,
+        password,
+      })
+
+      toast.success(res.data.message || 'Registered successfully')
+      router.replace('/auth/login')
+    } catch {
+      toast.error('Registration failed')
+    } finally {
+      setLoading(false)
+    }
+  }
+
   return (
-    <main className="flex items-center justify-center p-4 bg-background text-foreground mt-10  md:mt-16">
-      <div className="w-[95%] max-w-md bg-card shadow-lg rounded-lg p-6 sm:p-8 border border-border">
-        <h1 className="text-2xl sm:text-3xl font-bold text-center mb-6">Sign Up</h1>
+    <motion.main
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="flex items-center justify-center min-h-[85vh] px-4"
+    >
+      <div className="w-full max-w-md backdrop-blur-md bg-muted/40 border border-border p-6 sm:p-8 rounded-xl shadow-xl space-y-6">
+        <h1 className="text-3xl font-bold text-center">Sign Up</h1>
 
         <form onSubmit={onSignUp} className="space-y-4">
-          <div tabIndex={0} className="flex items-center bg-background group border rounded-lg focus-within:ring-2 focus-within:ring-blue-500">
+          <div className="flex items-center bg-background border border-border rounded-lg px-3 focus-within:ring-2 focus-within:ring-primary">
             <input
               type="text"
               placeholder="Username"
               value={username}
               required
               onChange={(e) => setUsername(e.target.value)}
-              className="w-full p-2.5 rounded-lg bg-background outline-none"
+              className="w-full p-2.5 bg-background outline-none"
             />
-            <User className="text-foreground mr-3" size={20}/>
+            <User className="text-muted-foreground ml-2" size={20} />
           </div>
 
-          <div tabIndex={0} className="flex items-center bg-background group border rounded-lg focus-within:ring-2 focus-within:ring-blue-500">
+          <div className="flex items-center bg-background border border-border rounded-lg px-3 focus-within:ring-2 focus-within:ring-primary">
             <input
               type="email"
               placeholder="Email"
               value={email}
               required
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full p-2.5 rounded-lg bg-background outline-none"
+              className="w-full p-2.5 bg-background outline-none"
             />
-            <Mail className="text-foreground mr-3" size={18}/>
+            <Mail className="text-muted-foreground ml-2" size={18} />
           </div>
 
-          <div tabIndex={0} className="flex items-center bg-background group border rounded-lg focus-within:ring-2 focus-within:ring-blue-500">
+          <div className="flex items-center bg-background border border-border rounded-lg px-3 focus-within:ring-2 focus-within:ring-primary">
             <input
               type="password"
               placeholder="Password"
               value={password}
               required
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full p-2.5 rounded-lg bg-background outline-none"
+              className="w-full p-2.5 bg-background outline-none"
             />
-            <Lock className="text-foreground mr-3" size={18}/>
+            <Lock className="text-muted-foreground ml-2" size={18} />
           </div>
 
-          <div tabIndex={0} className="flex items-center bg-background group border rounded-lg focus-within:ring-2 focus-within:ring-blue-500">
+          <div className="flex items-center bg-background border border-border rounded-lg px-3 focus-within:ring-2 focus-within:ring-primary">
             <input
               type="password"
               placeholder="Confirm Password"
               value={confirmPassword}
               required
               onChange={(e) => setConfirmPassword(e.target.value)}
-              className="w-full p-2.5 rounded-lg bg-background outline-none"
+              className="w-full p-2.5 bg-background outline-none"
             />
-            <Check className="text-foreground mr-3" size={18}/>
+            <Check className="text-muted-foreground ml-2" size={18} />
           </div>
 
-          <button
-            type="submit"
-            className="w-full p-2 bg-primary text-primary-foreground font-semibold rounded-md hover:opacity-90 transition"
-          >
-            Register
-          </button>
-        </form> <br />
+          <Button type="submit" disabled={loading} className="w-full">
+            {loading ? 'Registering...' : 'Register'}
+          </Button>
+        </form>
 
-        <p className="mt-4 text-center text-sm text-muted-foreground">
+        <p className="text-sm text-center text-muted-foreground">
           Already have an account?{' '}
           <Link href="/auth/login" className="underline text-blue-600 dark:text-blue-400">
             Login
           </Link>
         </p>
       </div>
-    </main>
+    </motion.main>
   )
 }
-
-export default SignUpPage

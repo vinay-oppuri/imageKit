@@ -1,4 +1,4 @@
-"use client"
+'use client'
 
 import { useState } from "react"
 import axios from "axios"
@@ -24,11 +24,9 @@ export default function VideoUploadForm({ onUploaded }: { onUploaded?: () => voi
     try {
       setIsSubmitting(true)
 
-      // Step 1: Get auth
       const authRes = await axios.get("/api/auth/imagekit-auth")
       const auth = authRes.data
 
-      // Step 2: Upload to ImageKit
       const res = await upload({
         file,
         fileName: file.name,
@@ -44,7 +42,6 @@ export default function VideoUploadForm({ onUploaded }: { onUploaded?: () => voi
         },
       })
 
-      // Step 3: Save metadata to your DB
       const fullVideoUrl = `${process.env.NEXT_PUBLIC_URL_ENDPOINT}/${res.filePath}`
       await axios.post("/api/videos", {
         title,
@@ -68,53 +65,55 @@ export default function VideoUploadForm({ onUploaded }: { onUploaded?: () => voi
   }
 
   return (
-    <form onSubmit={(e) => e.preventDefault()} className="mt-15 space-y-4 max-w-md mx-auto">
-      <div tabIndex={0} className="flex items-center bg-background group border rounded-lg focus-within:ring-2 focus-within:ring-blue-500">
-        <input
-          type="text"
-          placeholder="Video title"
-          value={title}
-          required
-          onChange={(e) => setTitle(e.target.value)}
-          className="w-full p-2.5 rounded-lg bg-background outline-none"
-        />
-        <Heading className="text-foreground mr-3" size={18} />
-      </div>
-
-      <div tabIndex={0} className="flex items-center bg-background group border rounded-lg focus-within:ring-2 focus-within:ring-blue-500">
-        <input
-          type="text"
-          placeholder="Video description"
-          value={description}
-          required
-          onChange={(e) => setDescription(e.target.value)}
-          className="w-full p-2.5 rounded-lg bg-background outline-none"
-        />
-        <Text className="text-foreground mr-3" size={18} />
-      </div>
-
-      <FileUpload
-        fileType="video"
-        onFileSelected={(selectedFile) => setFile(selectedFile)}
-      />
-
-      {progress !== null && (
-        <div className="w-full bg-gray-200 rounded-full h-2">
-          <div
-            className="bg-blue-600 h-2 rounded-full transition-all duration-300"
-            style={{ width: `${progress}%` }}
-          ></div>
+    <div className="backdrop-blur-md bg-white/10 dark:bg-zinc-900/30 border border-white/20 dark:border-zinc-700/40 rounded-xl shadow-xl p-6 max-w-md mx-auto mt-20 space-y-4">
+      <form onSubmit={(e) => e.preventDefault()} className="space-y-4">
+        <div tabIndex={0} className="flex items-center bg-background group border rounded-lg focus-within:ring-2 focus-within:ring-blue-500">
+          <input
+            type="text"
+            placeholder="Video title"
+            value={title}
+            required
+            onChange={(e) => setTitle(e.target.value)}
+            className="w-full p-2.5 rounded-lg bg-background outline-none"
+          />
+          <Heading className="text-foreground mr-3" size={18} />
         </div>
-      )}
 
-      <Button
-        type="submit"
-        onClick={handleSubmit}
-        disabled={isSubmitting || !title || !description || !file}
-        className="btn btn-primary w-full"
-      >
-        {isSubmitting ? "Uploading..." : "Upload"}
-      </Button>
-    </form>
+        <div tabIndex={0} className="flex items-center bg-background group border rounded-lg focus-within:ring-2 focus-within:ring-blue-500">
+          <input
+            type="text"
+            placeholder="Video description"
+            value={description}
+            required
+            onChange={(e) => setDescription(e.target.value)}
+            className="w-full p-2.5 rounded-lg bg-background outline-none"
+          />
+          <Text className="text-foreground mr-3" size={18} />
+        </div>
+
+        <FileUpload
+          fileType="video"
+          onFileSelected={(selectedFile) => setFile(selectedFile)}
+        />
+
+        {progress !== null && (
+          <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 overflow-hidden">
+            <div
+              className="bg-blue-600 h-2 transition-all duration-300"
+              style={{ width: `${progress}%` }}
+            ></div>
+          </div>
+        )}
+
+        <Button
+          type="submit"
+          onClick={handleSubmit}
+          disabled={isSubmitting || !title || !description || !file}
+          className="w-full"
+        >
+          {isSubmitting ? "Uploading..." : "Upload"}
+        </Button>
+      </form>
+    </div>
   )
 }

@@ -7,11 +7,19 @@ import { signIn } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
 import { useSession } from 'next-auth/react'
 import { User, Lock } from 'lucide-react'
+import { motion } from 'framer-motion'
 
-const LoginPage = () => {
+export default function LoginPage() {
   const router = useRouter()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const { data: session, status } = useSession()
+
+  useEffect(() => {
+    if (session?.user) {
+      router.replace('/auth/profile')
+    }
+  }, [router, session])
 
   const onLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -27,72 +35,73 @@ const LoginPage = () => {
         toast.error('Invalid Email ID or Password')
       }
     } else {
+      toast.success('Login Successful')
       router.replace('/auth/profile')
-      toast.success('Login Successful', { duration: 4000 })
     }
   }
 
-  const { data: session, status } = useSession()
-
-  useEffect(() => {
-    if (session?.user) {
-      router.replace('/auth/profile')
-    }
-  }, [router, session])
-
-  if (status === 'loading') return <p>Loading...</p>
+  if (status === 'loading') return <p className="text-center py-10">Loading...</p>
 
   return (
-    <div className="flex items-center justify-center px-4 bg-background text-foreground mt-10 md:mt-25">
-      <div className="w-[95%] max-w-sm bg-card p-6 rounded-xl shadow-md">
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      className="flex items-center justify-center px-4 bg-background text-foreground mt-10 md:mt-24"
+    >
+      <div className="w-full max-w-sm backdrop-blur-md bg-muted/40 border border-border p-6 rounded-2xl shadow-lg">
         <h1 className="text-2xl font-semibold text-center mb-6">Login</h1>
 
         <form onSubmit={onLogin} className="flex flex-col gap-4">
-          <div tabIndex={0} className="flex items-center bg-background group border rounded-lg focus-within:ring-2 focus-within:ring-blue-500">
+          {/* Email */}
+          <div className="flex items-center bg-background border border-border rounded-lg px-3 focus-within:ring-2 focus-within:ring-primary">
             <input
               type="email"
               placeholder="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full p-2.5 rounded-lg bg-background outline-none"
+              className="w-full p-2.5 bg-background outline-none"
               required
             />
-            <User className="text-foreground mr-3" size={20}/>
+            <User className="text-muted-foreground ml-2" size={20} />
           </div>
 
-          <div tabIndex={0} className="flex items-center bg-background group border rounded-lg focus-within:ring-2 focus-within:ring-blue-500">
+          {/* Password */}
+          <div className="flex items-center bg-background border border-border rounded-lg px-3 focus-within:ring-2 focus-within:ring-primary">
             <input
               type="password"
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full p-2.5 rounded-lg bg-background outline-none"
+              className="w-full p-2.5 bg-background outline-none"
               required
             />
-            <Lock className="text-foreground mr-3" size={18}/>
+            <Lock className="text-muted-foreground ml-2" size={18} />
           </div>
 
-          <div className="text-right text-sm text-blue-600 dark:text-blue-400">
+          {/* Forgot Password */}
+          <div className="text-right text-sm text-primary">
             <Link href="/auth/reset">Forgot Password?</Link>
           </div>
 
+          {/* Submit */}
           <button
             type="submit"
-            className="p-2 bg-primary text-primary-foreground font-semibold rounded-md hover:opacity-90 transition"
+            className="p-2 bg-primary text-primary-foreground font-semibold rounded-full hover:opacity-90 transition"
           >
             Sign In
           </button>
         </form>
-        <br />
 
-        <div className="text-center text-sm mt-4">
+        {/* Signup CTA */}
+        <div className="text-center text-sm mt-6">
           Don&apos;t have an account?{' '}
-          <Link href="/auth/signup" className="text-blue-600 underline dark:text-blue-400">
+          <Link href="/auth/signup" className="text-primary underline">
             Sign Up
           </Link>
         </div>
 
-        {/* --- Third Party Auth Buttons --- */}
+        {/* Third Party Logins */}
         <div className="flex items-center justify-center mt-6 gap-3 flex-wrap">
           <button
             onClick={() => signIn('google', { callbackUrl: '/auth/profile' })}
@@ -117,8 +126,6 @@ const LoginPage = () => {
           </button>
         </div>
       </div>
-    </div>
+    </motion.div>
   )
 }
-
-export default LoginPage

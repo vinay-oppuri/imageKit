@@ -1,5 +1,8 @@
-import VideoUploadForm from "@/components/video/videoUploadForm"
-import Link from "next/link"
+'use client'
+
+import { motion } from 'framer-motion'
+import Link from 'next/link'
+import VideoUploadForm from '@/components/video/videoUploadForm'
 
 export default function UploadPage() {
   const steps = [
@@ -19,15 +22,27 @@ export default function UploadPage() {
   ]
 
   return (
-    <div className="grid md:grid-cols-2 gap-8 px-4 md:px-20 py-12 mb-10">
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      className="grid md:grid-cols-2 gap-8 px-4 md:px-20 py-12 mb-10 text-foreground"
+    >
+      {/* Steps Section */}
       <section>
         <h2 className="text-2xl font-bold mb-4">Share Your Story in 3 Easy Steps</h2>
         <p className="text-muted-foreground mb-6 max-w-xl">
           Whether it&apos;s a travel adventure, tutorial, or funny moment—record and share your world with others.
         </p>
+
         <div className="grid gap-4">
           {steps.map((step, idx) => (
-            <div key={idx} className="bg-card p-6 rounded-xl shadow">
+            <motion.div
+              key={idx}
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.3 }}
+              className="bg-muted/40 backdrop-blur-md border border-border p-6 rounded-xl shadow-md"
+            >
               <h4 className="font-bold mb-1">{step.title}</h4>
               <p className="text-sm text-muted-foreground">{step.desc}</p>
               {step.link && (
@@ -35,15 +50,18 @@ export default function UploadPage() {
                   Learn More →
                 </Link>
               )}
-            </div>
+            </motion.div>
           ))}
         </div>
       </section>
 
-      <div>
-        <h1 className="text-center text-2xl font-bold mt-1 -mb-5">Upload Here</h1>
-        <VideoUploadForm />
+      {/* Upload Form Section */}
+      <div className="w-full">
+        <h1 className="text-center text-2xl font-bold mb-4">Upload Here</h1>
+        <div className="backdrop-blur-md bg-muted/30 border border-border p-6 rounded-xl shadow-lg">
+          <VideoUploadForm />
+        </div>
       </div>
-    </div>
+    </motion.div>
   )
 }

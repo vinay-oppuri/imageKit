@@ -13,9 +13,11 @@ import { Input } from './ui/input'
 import axios from 'axios'
 import toast from 'react-hot-toast'
 import { NextResponse } from 'next/server'
+import Link from 'next/link'
 
 export const CommunityCreate = () => {
 
+    const [loading, setLoading] = useState(false)
     const [open, setOpen] = useState(false)
     const [form, setForm] = useState({
         name: '',
@@ -31,15 +33,17 @@ export const CommunityCreate = () => {
 
         try {
             const req = await axios.post('/api/community/create', form)
+            setLoading(true)
             if (req.data.message) {
                 toast.success(req.data.message)
-                setForm({ name: '', description: ''})
+                setForm({ name: '', description: '' })
                 setOpen(false)
-            } else  {
+                setLoading(false)
+            } else {
                 toast.error(req.data.error)
-            } 
-            return NextResponse.json({error: 'Failed!'})
-            
+            }
+            return NextResponse.json({ error: 'Failed!' })
+
         } catch (error: any) {
             NextResponse.json({ error: 'Something went wrong' })
         }
@@ -51,31 +55,51 @@ export const CommunityCreate = () => {
                 <DialogTrigger asChild>
                     <Button variant='outline' className='text-primary hover:text-primary dark:bg-muted dark:hover:bg-popover'>Create Community</Button>
                 </DialogTrigger>
-                <DialogContent className="sm:max-w-[425px]">
+                <DialogContent className="sm:max-w-[425px] backdrop-blur-md bg-white/10 dark:bg-zinc-800/30 border border-white/20 shadow-xl">
                     <DialogHeader>
-                        <DialogTitle>Create Community</DialogTitle>
+                        <DialogTitle>Create a New Community</DialogTitle>
                     </DialogHeader>
-                    <div className='flex flex-col gap-3'>
-                        <div className="flex flex-col gap-2">
-                            <p className='font-semibold'>Name</p>
-                            <Input name='name' value={form.name} placeholder='Community Name' onChange={handleChange} />
-                        </div>
-                        <div className="flex flex-col gap-2">
-                            <p className='font-semibold'>Description</p>
-                            <Textarea
-                                name='description'
-                                value={form.description}
-                                placeholder='Description'
+
+                    <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+                        <div>
+                            <label className="font-semibold">Name</label>
+                            <Input
+                                name="name"
+                                value={form.name}
+                                placeholder="Community Name"
                                 onChange={handleChange}
-                                className='border rounded-lg focus-within:ring-2 focus-within:ring-blue-500'
+                                required
                             />
-                        </div><br />
-                        <Button onClick={handleSubmit}>Create</Button>
-                        <div className='flex justify-between'>
-                            <p>Want to join a community</p> <p>Join</p>
                         </div>
-                    </div>
+
+                        <div>
+                            <label className="font-semibold">Description</label>
+                            <Textarea
+                                name="description"
+                                value={form.description}
+                                placeholder="What is this community about?"
+                                onChange={handleChange}
+                                className="border rounded-lg"
+                            />
+                        </div>
+
+                        <Button type="submit" disabled={loading}>
+                            {loading ? 'Creating...' : 'Create'}
+                        </Button>
+
+                        <div className="flex justify-between text-sm text-muted-foreground pt-2">
+                            <span>Want to join a community?</span>
+                            <Link
+                                href="/community"
+                                onClick={() => setOpen(false)}
+                                className="text-primary font-medium"
+                            >
+                                Explore
+                            </Link>
+                        </div>
+                    </form>
                 </DialogContent>
+
             </form>
         </Dialog>
     )

@@ -16,8 +16,8 @@ export default function BottomNav() {
   const pathname = usePathname()
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-50 bg-background border-t border-border md:hidden rounded-2xl shadow-lg py-1">
-      <div className="flex justify-around items-center h-16">
+    <nav className="fixed bottom-4 left-4 right-4 z-50 md:hidden rounded-2xl backdrop-blur-md bg-muted/60 border border-border shadow-xl py-2 px-4">
+      <div className="flex justify-between items-center">
         {navItems.map(({ href, icon: Icon, label }) => {
           const isActive = pathname === href
 
@@ -25,18 +25,26 @@ export default function BottomNav() {
             <Link
               key={href}
               href={href}
-              className="flex flex-col items-center justify-center text-xs transition-colors"
+              className="flex flex-col items-center justify-center text-xs transition-all duration-200 hover:opacity-90"
             >
-              <div className={cn('w-10 h-10 flex items-center justify-center rounded-full', isActive ? 'bg-muted' : 'bg-transparent')}>
-                <Icon
-                  className={cn('h-5 w-5', isActive ? 'text-primary ' : 'text-muted-foreground')}
-                />
+              <div
+                className={cn(
+                  'w-10 h-10 flex items-center justify-center rounded-full transition-all',
+                  isActive
+                    ? 'bg-primary/10 text-primary'
+                    : 'bg-transparent text-muted-foreground'
+                )}
+              >
+                <Icon className="w-5 h-5" />
               </div>
-
-              <span className={cn('mt-1 text-[11px]', isActive ? 'text-primary font-medium' : 'text-muted-foreground')}>
+              <span
+                className={cn(
+                  'mt-1 text-[11px] transition-colors',
+                  isActive ? 'text-primary font-medium' : 'text-muted-foreground'
+                )}
+              >
                 {label}
               </span>
-              
             </Link>
           )
         })}

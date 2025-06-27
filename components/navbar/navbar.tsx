@@ -1,34 +1,39 @@
 'use client'
 
 import Link from 'next/link'
-import { useSession } from 'next-auth/react'
-import { Button } from '../ui/button'
 import Image from 'next/image'
-import MobileSidebar from '../navbar/mobileSidebar'
-import BottomNav from '../navbar/bottomNavbar'
+import { useSession } from 'next-auth/react'
 import { useTheme } from 'next-themes'
 import { Moon, Sun } from 'lucide-react'
+
+import { Button } from '@/components/ui/button'
+import MobileSidebar from '@/components/navbar/mobileSidebar'
+import BottomNav from '@/components/navbar/bottomNavbar'
 import ProfilePopover from './popOver'
 
-const Navbar = () => {
+export default function Navbar() {
   const { data: session } = useSession()
   const { theme, setTheme } = useTheme()
 
+  const toggleTheme = () => setTheme(theme === 'dark' ? 'light' : 'dark')
+
   return (
     <>
-      <nav className="bg-background sticky top-0 left-0 right-0 flex items-center justify-between p-5 z-50 shadow-sm border-b border-border">
-        <Link href="/" className="text-lg font-semibold px-2 sm:px-8 md:px-20 flex items-center">
+      <nav className="bg-background sticky top-0 inset-x-0 z-50 shadow-sm border-b border-border px-4 sm:px-8 md:px-20 py-4 flex items-center justify-between">
+        {/* Logo */}
+        <Link href="/" className="flex items-center">
           <Image
-            className="w-25 sm:w-30 md:w-35 lg:w-40 dark:invert"
             src="/logo.svg"
             alt="Logo"
             width={180}
             height={38}
             priority
+            className="dark:invert"
           />
         </Link>
 
-        <div className="hidden md:flex items-center gap-4">
+        {/* Desktop Navigation Links */}
+        <div className="hidden md:flex items-center gap-6 text-sm font-medium">
           <Link href="/">Home</Link>
           <Link href="/explore">Explore</Link>
           <Link href="/upload">Upload</Link>
@@ -36,26 +41,36 @@ const Navbar = () => {
           <Link href="/contact">Contact</Link>
         </div>
 
-        <div className="flex items-center justify-center gap-2 md:px-20">
-          {session && <ProfilePopover/>}
-          {!session && (
-            <Button><Link href='/auth/login'>Get Started</Link></Button>
+        {/* Right Side Actions */}
+        <div className="flex items-center gap-3">
+          {session ? (
+            <ProfilePopover />
+          ) : (
+            <Button>
+              <Link href="/auth/login">Get Started</Link>
+            </Button>
           )}
 
-          <Button variant="ghost" size="icon" className='hidden md:flex'
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
-            {theme === "dark" ? <Sun /> : <Moon />}
+          {/* Theme toggle - only visible on desktop */}
+          <Button
+            variant="ghost"
+            size="icon"
+            className="hidden md:flex"
+            onClick={toggleTheme}
+            aria-label="Toggle Theme"
+          >
+            {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
           </Button>
 
-          <div className='md:hidden'>
+          {/* Mobile Menu */}
+          <div className="md:hidden">
             <MobileSidebar />
           </div>
         </div>
       </nav>
 
+      {/* Bottom navigation for mobile */}
       <BottomNav />
     </>
   )
 }
-
-export default Navbar

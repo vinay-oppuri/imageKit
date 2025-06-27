@@ -23,6 +23,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "embla-carousel-react": "^8.6.0",
+    "framer-motion": "^12.19.2",
     "imagekit": "^6.0.0",
     "imagekitio-react": "^4.3.0",
     "jsonwebtoken": "^9.0.2",
@@ -35,6 +36,7 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-hot-toast": "^2.5.2",
+    "react-icons": "^5.5.0",
     "select": "^1.1.2",
     "tailwind-merge": "^3.3.1"
   },

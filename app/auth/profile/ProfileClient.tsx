@@ -6,9 +6,8 @@ import { User, LogOut, Mail, Settings, UserCircle2 } from 'lucide-react'
 import { signOut, useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
 import React, { useEffect } from 'react'
-import toast from 'react-hot-toast'
 
-const ProfileClient = () => {
+export default function ProfileClient() {
   const router = useRouter()
   const { data: session, status } = useSession()
 
@@ -22,39 +21,50 @@ const ProfileClient = () => {
 
   return (
     <div className="flex items-center justify-center bg-background text-foreground p-4 mt-20 md:mt-24">
-      <div className="w-[95%] max-w-md p-6 rounded-xl border border-border bg-card shadow-md space-y-4 text-center">
+      <div className="w-full max-w-md backdrop-blur-md bg-muted/40 border border-border rounded-2xl shadow-xl p-6 text-center space-y-6">
+        {/* Avatar */}
         <div className="flex justify-center">
-          <Avatar className="w-20 h-20">
+          <Avatar className="w-20 h-20 ring-2 ring-primary">
             {session?.user?.image ? (
-              <AvatarImage src={session?.user?.image} alt="User Avatar" />
+              <AvatarImage src={session.user.image} alt="User Avatar" />
             ) : (
-              <AvatarFallback><User size={30}/></AvatarFallback>
+              <AvatarFallback>
+                <User size={28} />
+              </AvatarFallback>
             )}
           </Avatar>
         </div>
 
-        <h1 className="text-2xl font-bold">Welcome, {session?.user?.name || 'User'}!</h1>
+        {/* Name */}
+        <h1 className="text-2xl font-bold">
+          Welcome, {session?.user?.name || 'User'}!
+        </h1>
 
-        <div className="flex flex-col text-muted-foreground gap-2">
-          <div className="flex items-center justify-center gap-2 text-sm">
-            <Mail size={16}/> {session?.user?.email}
+        {/* User Info */}
+        <div className="text-muted-foreground space-y-1 text-sm">
+          <div className="flex items-center justify-center gap-2">
+            <Mail size={16} />
+            {session?.user?.email}
           </div>
-          <div className="flex items-center justify-center gap-2 text-sm">
-            <UserCircle2 size={16} /> Member since: <span className="font-medium">2025</span>
+          <div className="flex items-center justify-center gap-2">
+            <UserCircle2 size={16} />
+            Member since: <span className="font-medium">2025</span>
           </div>
         </div>
 
-        <div className="mt-6 space-y-2">
+        {/* Action Buttons */}
+        <div className="space-y-2">
           <Button
             variant="outline"
-            className="w-full flex gap-2 justify-center"
+            className="w-full flex items-center justify-center gap-2"
             onClick={() => router.push('/settings')}
           >
             <Settings size={16} /> Account Settings
           </Button>
+
           <Button
             variant="destructive"
-            className="w-full flex gap-2 justify-center"
+            className="w-full flex items-center justify-center gap-2"
             onClick={() => signOut()}
           >
             <LogOut size={16} /> Logout
@@ -64,5 +74,3 @@ const ProfileClient = () => {
     </div>
   )
 }
-
-export default ProfileClient
