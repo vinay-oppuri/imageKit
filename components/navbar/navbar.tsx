@@ -16,7 +16,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="fixed m-auto md:w-[80%] top-2 left-2 right-2 z-50 px-4 py-5 flex items-center justify-between backdrop-blur-md bg-muted/30 shadow-xl rounded-4xl not-md:border">
+      <nav className="fixed m-auto md:w-[80%] top-2 left-2 right-2 z-50 px-4 py-5 flex items-center justify-between backdrop-blur-md bg-muted/30 shadow-xl rounded-full not-md:border">
         <Link href="/" className="text-lg font-semibold flex items-center">
           <Image
             className="w-20 lg:w-28 dark:invert ml-2 md:ml-10"
