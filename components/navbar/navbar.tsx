@@ -19,7 +19,7 @@ const Navbar = () => {
       <nav className="fixed m-auto md:w-[80%] top-2 left-2 right-2 z-50 px-4 py-5 flex items-center justify-between backdrop-blur-md bg-muted/30 border-b border-white/20 dark:border-zinc-800/30 rounded-b-3xl md:rounded-4xl">
         <Link href="/" className="text-lg font-semibold flex items-center">
           <Image
-            className="w-25 sm:w-30 md:w-35 lg:w-40 dark:invert ml-2 md:ml-10"
+            className="w-20 lg:w-28 dark:invert ml-2 md:ml-10"
             src="/logo.svg"
             alt="Logo"
             width={180}
