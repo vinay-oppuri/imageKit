@@ -42,7 +42,7 @@ export default function Home() {
 
         {/* Preview Box */}
         <div className="relative w-full md:w-1/2 mb-12 md:mb-0 z-0">
-          <div className="w-full h-60 md:h-96 rounded-2xl backdrop-blur-lg bg-muted/40 border border-border flex items-center justify-center shadow-xl">
+          <div className="w-full h-50 md:h-86 rounded-2xl backdrop-blur-lg bg-muted/40 border border-border flex items-center justify-center shadow-xl">
             <span className="text-xl text-foreground font-medium">🎬 Featured Video Preview</span>
           </div>
           <div className="absolute -inset-2 rounded-2xl border-2 border-primary opacity-20 blur-2xl pointer-events-none" />

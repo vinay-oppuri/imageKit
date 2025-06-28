@@ -71,7 +71,7 @@ export default function SignUpPage() {
               onChange={(e) => setUsername(e.target.value)}
               className="w-full p-2.5 bg-background outline-none"
             />
-            <User className="text-muted-foreground ml-2" size={20} />
+            <User className="text-muted-foreground" size={20} />
           </div>
 
           <div className="flex items-center bg-background border border-border rounded-lg px-3 focus-within:ring-2 focus-within:ring-primary">
@@ -83,7 +83,7 @@ export default function SignUpPage() {
               onChange={(e) => setEmail(e.target.value)}
               className="w-full p-2.5 bg-background outline-none"
             />
-            <Mail className="text-muted-foreground ml-2" size={18} />
+            <Mail className="text-muted-foreground" size={18} />
           </div>
 
           <div className="flex items-center bg-background border border-border rounded-lg px-3 focus-within:ring-2 focus-within:ring-primary">
@@ -95,7 +95,7 @@ export default function SignUpPage() {
               onChange={(e) => setPassword(e.target.value)}
               className="w-full p-2.5 bg-background outline-none"
             />
-            <Lock className="text-muted-foreground ml-2" size={18} />
+            <Lock className="text-muted-foreground" size={18} />
           </div>
 
           <div className="flex items-center bg-background border border-border rounded-lg px-3 focus-within:ring-2 focus-within:ring-primary">
@@ -105,12 +105,12 @@ export default function SignUpPage() {
               value={confirmPassword}
               required
               onChange={(e) => setConfirmPassword(e.target.value)}
-              className="w-full p-2.5 bg-background outline-none"
+              className="w-full py-2.5 bg-background outline-none"
             />
-            <Check className="text-muted-foreground ml-2" size={18} />
+            <Check className="text-muted-foreground" size={18} />
           </div>
 
-          <Button type="submit" disabled={loading} className="w-full">
+          <Button type="submit" disabled={loading} className="w-full rounded-4xl">
             {loading ? 'Registering...' : 'Register'}
           </Button>
         </form>

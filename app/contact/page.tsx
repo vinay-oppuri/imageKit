@@ -54,10 +54,10 @@ export default function ContactPage() {
               placeholder="Name"
               value={form.name}
               onChange={handleChange}
-              className="w-full p-2.5 rounded-lg bg-background outline-none"
+              className="w-full py-2.5 rounded-lg bg-background outline-none"
               required
             />
-            <User className="text-muted-foreground ml-2" size={20} />
+            <User className="text-muted-foreground" size={20} />
           </div>
 
           <div className="flex items-center bg-background border border-border rounded-lg px-3 focus-within:ring-2 focus-within:ring-primary">
@@ -67,10 +67,10 @@ export default function ContactPage() {
               placeholder="Email"
               value={form.email}
               onChange={handleChange}
-              className="w-full p-2.5 rounded-lg bg-background outline-none"
+              className="w-full py-2.5 rounded-lg bg-background outline-none"
               required
             />
-            <Mail className="text-muted-foreground ml-2" size={18} />
+            <Mail className="text-muted-foreground" size={18} />
           </div>
 
           <div className="flex bg-background border border-border rounded-lg px-3 focus-within:ring-2 focus-within:ring-primary">
@@ -80,9 +80,9 @@ export default function ContactPage() {
               value={form.message}
               onChange={handleChange}
               required
-              className="w-full bg-background outline-none p-2.5"
+              className="w-full bg-background outline-none py-2.5"
             />
-            <MessageCircle className="text-muted-foreground ml-2" size={18} />
+            <MessageCircle className='text-muted-foreground mt-3' size={18}/>
           </div>
 
           <Button

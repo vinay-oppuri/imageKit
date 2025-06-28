@@ -77,10 +77,10 @@ export default function MobileSidebar() {
 
               <Button
                 variant="destructive"
-                className="w-full"
+                className="w-full rounded-4xl"
                 onClick={() => signOut()}
               >
-                <LogOut className="mr-2 h-4 w-4" /> Logout
+                <LogOut/> Logout
               </Button>
             </>
           ) : (
@@ -96,7 +96,7 @@ export default function MobileSidebar() {
               </div>
 
               <Link href="/auth/login" onClick={handleClick}>
-                <Button className="w-full">Sign In</Button>
+                <Button className="w-full rounded-4xl">Sign In</Button>
               </Link>
             </>
           )}

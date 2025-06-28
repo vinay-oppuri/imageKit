@@ -24,7 +24,7 @@ export default function ProfilePopover() {
         className="cursor-pointer"
         aria-label="Profile menu"
       >
-        <div className="flex items-center rounded-md text-sm font-medium bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 gap-2">
+        <div className="flex items-center rounded-4xl text-sm font-medium bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 gap-2">
           <span>Hi, {name}</span>
           <ChevronDown className="w-4 h-4" />
         </div>
@@ -33,10 +33,10 @@ export default function ProfilePopover() {
       <PopoverContent
         onMouseEnter={() => setOpen(true)}
         onMouseLeave={() => setOpen(false)}
-        className="w-60 border border-white/20 dark:border-zinc-800/30 bg-white/10 dark:bg-zinc-900/40 backdrop-blur-md shadow-xl rounded-xl p-4"
+        className="w-50 border border-white/20 dark:border-zinc-800/30 bg-white/10 dark:bg-zinc-900/40 backdrop-blur-md shadow-xl rounded-xl p-4"
       >
         <div className="space-y-3">
-          <div className="flex flex-col items-center">
+          <div className="flex flex-col items-center gap-2">
             <Avatar className="w-12 h-12">
               {session?.user?.image ? (
                 <AvatarImage src={session?.user?.image} alt="User Avatar" />
@@ -50,8 +50,8 @@ export default function ProfilePopover() {
             </div>
           </div>
 
-          <Button variant='destructive' className='w-full' onClick={() => signOut()}>
-            <LogOut className="mr-2 h-4 w-4" /> Logout
+          <Button variant='destructive' className='w-full rounded-4xl' onClick={() => signOut()}>
+            <LogOut/> Logout
           </Button>
         </div>
       </PopoverContent>

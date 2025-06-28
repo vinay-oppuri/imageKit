@@ -60,10 +60,10 @@ export default function LoginPage() {
               placeholder="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full p-2.5 bg-background outline-none"
+              className="w-full py-2.5 bg-background outline-none"
               required
             />
-            <User className="text-muted-foreground ml-2" size={20} />
+            <User className="text-muted-foreground" size={20} />
           </div>
 
           {/* Password */}
@@ -73,10 +73,10 @@ export default function LoginPage() {
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full p-2.5 bg-background outline-none"
+              className="w-full py-2.5 bg-background outline-none"
               required
             />
-            <Lock className="text-muted-foreground ml-2" size={18} />
+            <Lock className="text-muted-foreground" size={18} />
           </div>
 
           {/* Forgot Password */}
