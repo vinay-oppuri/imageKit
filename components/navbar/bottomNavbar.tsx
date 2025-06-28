@@ -29,7 +29,7 @@ export default function BottomNav() {
             >
               <div
                 className={cn(
-                  'w-10 h-10 flex items-center justify-center rounded-full transition-all',
+                  'w-15 h-15 flex items-center justify-center rounded-full transition-all',
                   isActive
                     ? 'bg-primary/10 text-primary'
                     : 'bg-transparent text-muted-foreground'
@@ -37,14 +37,14 @@ export default function BottomNav() {
               >
                 <Icon className="w-5 h-5" />
               </div>
-              <span
+              {/* <span
                 className={cn(
                   'mt-1 text-[11px] transition-colors',
                   isActive ? 'text-primary font-medium' : 'text-muted-foreground'
                 )}
               >
-                {/* {label} */}
-              </span>
+                {label}
+              </span> */}
             </Link>
           )
         })}
