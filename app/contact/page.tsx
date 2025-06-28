@@ -40,7 +40,7 @@ export default function ContactPage() {
       initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className="flex items-center justify-center px-4 md:px-20 bg-background text-foreground mt-32 md:mt-38"
+      className="w-[95%] flex items-center justify-center px-4 md:px-20 bg-background text-foreground mt-32 md:mt-38 mx-auto"
     >
       <div className="w-full max-w-2xl backdrop-blur-md bg-muted/40 border border-border shadow-lg rounded-2xl p-6 md:p-8 space-y-6">
         <h1 className="text-3xl font-bold text-center">Contact Us</h1>

@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative flex flex-col-reverse md:flex-row items-center justify-between px-4 md:px-20 py-8 md:py-10 mt-20 md:mt-24 bg-background overflow-hidden">
+      <section className="relative flex flex-col md:flex-row items-center justify-between px-4 md:px-20 py-8 md:py-10 mt-20 md:mt-24 bg-background overflow-hidden">
         <div className="max-w-xl z-10">
           <motion.h2
             className="text-sm uppercase tracking-wider text-muted-foreground font-semibold mb-2"
@@ -41,7 +41,7 @@ export default function Home() {
         </div>
 
         {/* Preview Box */}
-        <div className="relative w-full md:w-1/2 mb-12 md:mb-0 z-0">
+        <div className="relative w-full md:w-1/2 mt-12 md:mt-0 z-0">
           <div className="w-full h-50 md:h-86 rounded-2xl backdrop-blur-lg bg-muted/40 border border-border flex items-center justify-center shadow-xl">
             <span className="text-xl text-foreground font-medium">🎬 Featured Video Preview</span>
           </div>

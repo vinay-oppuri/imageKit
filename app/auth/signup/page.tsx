@@ -56,7 +56,7 @@ export default function SignUpPage() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="flex items-center justify-center min-h-[85vh] px-4 mt-10 md:mt-20"
+      className="w-[95%] flex items-center justify-center px-4 mt-32 md:mt-38 mx-auto"
     >
       <div className="w-full max-w-md backdrop-blur-md bg-muted/40 border border-border p-6 sm:p-8 rounded-xl shadow-xl space-y-6">
         <h1 className="text-3xl font-bold text-center">Sign Up</h1>
@@ -110,7 +110,7 @@ export default function SignUpPage() {
             <Check className="text-muted-foreground" size={18} />
           </div>
 
-          <Button type="submit" disabled={loading} className="w-full rounded-4xl">
+          <Button type="submit" disabled={loading} className="w-full bg-primary text-primary-foreground font-semibold rounded-full hover:opacity-90 transition p-2">
             {loading ? 'Registering...' : 'Register'}
           </Button>
         </form>

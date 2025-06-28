@@ -47,7 +47,7 @@ export default function LoginPage() {
       initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className="flex items-center justify-center px-4 bg-background text-foreground mt-32 md:mt-38"
+      className="w-[95%] flex items-center justify-center px-4 bg-background text-foreground mt-32 md:mt-38 mx-auto"
     >
       <div className="w-full max-w-sm backdrop-blur-md bg-muted/40 border border-border p-6 rounded-2xl shadow-lg">
         <h1 className="text-2xl font-semibold text-center mb-6">Login</h1>
