@@ -47,7 +47,7 @@ export default function LoginPage() {
       initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className="flex items-center justify-center px-4 bg-background text-foreground mt-10 md:mt-24"
+      className="flex items-center justify-center px-4 bg-background text-foreground mt-32 md:mt-38"
     >
       <div className="w-full max-w-sm backdrop-blur-md bg-muted/40 border border-border p-6 rounded-2xl shadow-lg">
         <h1 className="text-2xl font-semibold text-center mb-6">Login</h1>
@@ -96,7 +96,7 @@ export default function LoginPage() {
         {/* Signup CTA */}
         <div className="text-center text-sm mt-6">
           Don&apos;t have an account?{' '}
-          <Link href="/auth/signup" className="text-primary underline">
+          <Link href="/auth/signup" className="text-blue-600 underline">
             Sign Up
           </Link>
         </div>

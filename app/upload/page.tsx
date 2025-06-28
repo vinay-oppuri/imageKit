@@ -26,7 +26,7 @@ export default function UploadPage() {
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className="min-h-screen px-4 md:px-20 py-10 bg-background overflow-x-hidden"
+      className="min-h-screen px-4 md:px-20 py-10 bg-background overflow-x-hidden mt-20 md:mt-24"
     >
       <div className="flex flex-col lg:flex-row gap-10 items-start justify-between max-w-7xl mx-auto">
         {/* Steps Section */}

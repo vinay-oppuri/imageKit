@@ -8,7 +8,7 @@ import { motion } from 'framer-motion'
 
 export default function Community() {
   return (
-    <div className="mb-24">
+    <div className="mt-28 md:mt-32 mb-24">
       {/* Hero Section */}
       <section className="flex flex-col md:flex-row justify-between items-center px-4 md:px-20 py-10 bg-muted/40 backdrop-blur-md border border-border text-foreground rounded-xl mx-4 md:mx-20 mt-10 mb-10 shadow-lg">
         {/* Left: Highlight Preview */}

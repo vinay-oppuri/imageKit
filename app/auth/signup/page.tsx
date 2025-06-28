@@ -56,7 +56,7 @@ export default function SignUpPage() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="flex items-center justify-center min-h-[85vh] px-4"
+      className="flex items-center justify-center min-h-[85vh] px-4 mt-10 md:mt-20"
     >
       <div className="w-full max-w-md backdrop-blur-md bg-muted/40 border border-border p-6 sm:p-8 rounded-xl shadow-xl space-y-6">
         <h1 className="text-3xl font-bold text-center">Sign Up</h1>
@@ -117,7 +117,7 @@ export default function SignUpPage() {
 
         <p className="text-sm text-center text-muted-foreground">
           Already have an account?{' '}
-          <Link href="/auth/login" className="underline text-blue-600 dark:text-blue-400">
+          <Link href="/auth/login" className="underline text-blue-600">
             Login
           </Link>
         </p>

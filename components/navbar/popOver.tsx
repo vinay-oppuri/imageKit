@@ -50,7 +50,7 @@ export default function ProfilePopover() {
             </div>
           </div>
 
-          <Button variant='destructive' className='w-full'>
+          <Button variant='destructive' className='w-full' onClick={() => signOut()}>
             <LogOut className="mr-2 h-4 w-4" /> Logout
           </Button>
         </div>

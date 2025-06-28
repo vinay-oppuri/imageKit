@@ -20,7 +20,7 @@ export default function ProfileClient() {
   if (status === 'loading') return <p className="text-center mt-10">Loading...</p>
 
   return (
-    <div className="flex items-center justify-center bg-background text-foreground p-4 mt-20 md:mt-24">
+    <div className="flex items-center justify-center bg-background text-foreground p-4 mt-32 md:mt-38">
       <div className="w-full max-w-md backdrop-blur-md bg-muted/40 border border-border rounded-2xl shadow-xl p-6 text-center space-y-6">
         {/* Avatar */}
         <div className="flex justify-center">

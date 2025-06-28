@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative flex flex-col-reverse md:flex-row items-center justify-between px-4 md:px-20 py-8 md:py-10  bg-background overflow-hidden">
+      <section className="relative flex flex-col-reverse md:flex-row items-center justify-between px-4 md:px-20 py-8 md:py-10 mt-20 md:mt-24 bg-background overflow-hidden">
         <div className="max-w-xl z-10">
           <motion.h2
             className="text-sm uppercase tracking-wider text-muted-foreground font-semibold mb-2"
@@ -34,7 +34,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
-            className="bg-muted/50 backdrop-blur-md text-foreground border border-border px-6 py-3 rounded-full shadow-md"
+            className="bg-primary/60 backdrop-blur-md text-foreground border border-border px-6 py-3 rounded-full shadow-md"
           >
             <Link href="/explore">Explore Now</Link>
           </MotionButton>
