@@ -29,7 +29,7 @@ export default function BottomNav() {
             >
               <div
                 className={cn(
-                  'w-15 h-15 flex items-center justify-center rounded-full transition-all',
+                  'w-13 h-13 flex items-center justify-center rounded-full transition-all',
                   isActive
                     ? 'bg-primary/10 text-primary'
                     : 'bg-transparent text-muted-foreground'
