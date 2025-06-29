@@ -3,7 +3,6 @@
 import * as React from 'react'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import { Card, CardContent } from '@/components/ui/card'
 import {
   Carousel,
   CarouselContent,
@@ -11,11 +10,8 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel'
-import { Button } from './ui/button'
 import toast from 'react-hot-toast'
-import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar'
-import { User } from 'lucide-react'
-import Link from 'next/link'
+import ComCard from './ui/comCard'
 
 interface Community {
   name: string
@@ -75,47 +71,23 @@ export function Communities() {
 
   return (
     <div className="flex items-center justify-center">
-      <Carousel className="w-full max-w-4xl px-4">
-        <CarouselContent className="-ml-1">
+      <Carousel className="w-[60%] md:w-full md:max-w-6xl md:px-4" opts={{ align: 'start', slidesToScroll: 1 }}>
+        <CarouselContent>
           {communities.map((community, index) => (
-            <CarouselItem key={index} className="pl-1 !w-full sm:!w-1/2 lg:!w-1/3">
-              <div className="p-2">
-                <Card className="h-full">
-                  <CardContent className="flex flex-col items-center justify-center gap-4 p-6">
-                    <Avatar className="w-20 h-20">
-                      {community.admin.image ? (
-                        <AvatarImage
-                          src={community.admin.image}
-                          alt={`${community.admin.name}'s avatar`}
-                        />
-                      ) : (
-                        <AvatarFallback><User size={30} /></AvatarFallback>
-                      )}
-                    </Avatar>
-
-                    <div className="flex flex-col text-center gap-3">
-                      <h3 className="text-lg font-semibold hover:underline cursor-pointer">
-                        <Link href={`/community/${community.name}`}>
-                          {community.name}
-                        </Link>
-                      </h3>
-                      <p className="text-sm text-muted-foreground">
-                        {community.description || "No description"}
-                      </p>
-                      <p className="text-xs text-muted-foreground">Created by: {community.admin.name}</p>
-                      <p className="text-xs text-muted-foreground">Email: {community.admin.email}</p>
-                    </div>
-
-                    <Button
-                      className="w-full"
-                      disabled={joining === community.name}
-                      onClick={() => handleClick(community.name)}
-                    >
-                      {joining === community.name ? "Joining..." : "Join"}
-                    </Button>
-                  </CardContent>
-                </Card>
-              </div>
+            <CarouselItem
+              key={index}
+              className=" sm:basis-1/2 md:basis-1/3 lg:basis-1/4"
+            >
+              <ComCard
+                title={community.name}
+                description={community.description || "No description"}
+                profile={community.admin.image}
+                createdBy={community.admin.name}
+                email={community.admin.email}
+                buttonText="Join"
+                onButtonClick={() => handleClick(community.name)}
+                loading={joining === community.name}
+              />
             </CarouselItem>
           ))}
         </CarouselContent>

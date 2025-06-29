@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative flex flex-col-reverse md:flex-row items-center justify-between px-4 md:px-20 py-8 md:py-10 mt-20 md:mt-24 bg-background overflow-hidden">
+      <section className="relative flex flex-col-reverse md:flex-row items-center justify-between px-4 md:px-20 py-8 md:py-10 mt-20 md:mt-24 overflow-hidden">
         <div className="max-w-xl z-10">
           <motion.h2
             className="text-sm uppercase tracking-wider text-muted-foreground font-semibold mb-2"
@@ -42,7 +42,7 @@ export default function Home() {
 
         {/* Preview Box */}
         <div className="relative w-full md:w-1/2 mb-12 md:mb-0 z-0">
-          <div className="w-full h-50 md:h-86 rounded-2xl backdrop-blur-lg bg-muted/40 border border-border flex items-center justify-center shadow-xl">
+          <div className="w-full h-50 md:h-86 rounded-2xl backdrop-blur-lg  border border-border flex items-center justify-center shadow-xl">
             <span className="text-xl text-foreground font-medium">🎬 Featured Video Preview</span>
           </div>
           <div className="absolute -inset-2 rounded-2xl border-2 border-primary opacity-20 blur-2xl pointer-events-none" />
@@ -50,7 +50,7 @@ export default function Home() {
       </section>
 
       {/* Features Section */}
-      <section className="px-4 md:px-20 py-10 text-center md:text-left bg-background mb-20 md:mb-5">
+      <section className="px-4 md:px-20 py-10 text-center md:text-left  mb-20 md:mb-5">
         <h2 className="text-3xl font-bold text-foreground mb-10 text-center">Why Join Us?</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <GlassCard
