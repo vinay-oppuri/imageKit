@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="min-h-screen overflow-x-hidden text-foreground bg-[url('/darkBG.jpg')] bg-cover bg-center bg-no-repeat h-screen w-full">
+      <body className="min-h-screen overflow-x-hidden bg-background text-foreground">
         <Providers>
           <Navbar />
           {children}
