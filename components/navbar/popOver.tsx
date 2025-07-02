@@ -24,7 +24,7 @@ export default function ProfilePopover() {
         className="cursor-pointer"
         aria-label="Profile menu"
       >
-        <div className="flex items-center rounded-4xl text-sm font-medium bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 gap-2">
+        <div className="flex items-center rounded-full text-sm font-medium bg-primary text-primary-foreground hover:bg-primary/90 px-4 py-2 gap-2">
           <span>Hi, {name}</span>
           <ChevronDown className="w-4 h-4" />
         </div>
