@@ -32,9 +32,9 @@ export default function Home() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
+            animate={{ opacity: 1, y: 0 }} //bg-primary/60
             transition={{ duration: 1 }}
-            className="bg-primary/60 backdrop-blur-md text-foreground border border-border px-6 py-3 rounded-full shadow-md"
+            className=" backdrop-blur-md text-foreground border border-border px-6 py-3 rounded-full shadow-md"
           >
             <Link href="/explore">Explore Now</Link>
           </MotionButton>
@@ -49,8 +49,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="px-4 md:px-20 py-10 text-center md:text-left bg-background mb-20 md:mb-5">
+      {/* Features Section  // bg-background  */}
+      <section className="px-4 md:px-20 py-10 text-center md:text-left mb-20 md:mb-5">
         <h2 className="text-3xl font-bold text-foreground mb-10 text-center">Why Join Us?</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <GlassCard

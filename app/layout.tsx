@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/navbar/navbar"
 import Providers from "@/components/providers";
+import SplineEmbed from "@/components/spline";
 
 export const metadata: Metadata = {
   title: "Clipo - Discover & Share Videos",
@@ -17,6 +18,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className="min-h-screen overflow-x-hidden bg-background text-foreground">
         <Providers>
+          <SplineEmbed/>
           <Navbar />
           {children}
         </Providers>
