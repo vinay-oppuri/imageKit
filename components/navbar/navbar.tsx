@@ -33,42 +33,32 @@ const Navbar = () => {
           />
         </Link>
 
-        {!showSearchBar.includes(pathname) && (
-          <div className="hidden md:flex items-center gap-4">
-            <Link href="/">Home</Link>
-            <Link href="/explore">Explore</Link>
-            <Link href="/upload">Upload</Link>
-            <Link href="/community">Community</Link>
-            <Link href="/contact">Contact</Link>
-          </div>
-        )}
+        <div className="hidden md:flex items-center gap-4">
+          <Link href="/">Home</Link>
+          <Link href="/explore">Explore</Link>
+          <Link href="/upload">Upload</Link>
+          <Link href="/community">Community</Link>
+          <Link href="/contact">Contact</Link>
+        </div>
 
         <div className="flex items-center gap-2 md:mr-10">
-          {showSearchBar.includes(pathname) && (
-            <div className="w-full max-w-md ml-auto">
-              <SearchBar />
-            </div>
-          )}
-          <div className={`${pathname === '/community' ? 'hidden md:block' : ''}`}>
-            {session ? (
-              <ProfilePopover />
-            ) : (
-              <Button className='rounded-full p-4'>
-                <Link href="/auth/login">Get Started</Link>
-              </Button>
-            )}
-          </div>
-
-          {showSearchBar.includes(pathname) && (
-            <Button
-              variant="ghost"
-              size="icon"
-              className="hidden md:flex"
-              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-            >
-              {theme === 'dark' ? <Sun /> : <Moon />}
+          {session ? (
+            <ProfilePopover />
+          ) : (
+            <Button className='rounded-full p-4'>
+              <Link href="/auth/login">Get Started</Link>
             </Button>
           )}
+
+          <Button
+            variant="ghost"
+            size="icon"
+            className="hidden md:flex"
+            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+          >
+            {theme === 'dark' ? <Sun /> : <Moon />}
+          </Button>
+
           <div className="md:hidden">
             <MobileSidebar />
           </div>
