@@ -25,7 +25,7 @@ export default function ProfilePopover() {
         aria-label="Profile menu"
       >
         <div className="flex items-center rounded-full text-sm font-medium bg-primary text-primary-foreground hover:bg-primary/90 px-4 py-2 gap-2">
-          <span>Hi, {name}</span>
+          <span className="truncate max-w-[100px]">Hi, {name}</span>
           <ChevronDown className="w-4 h-4" />
         </div>
       </PopoverTrigger>

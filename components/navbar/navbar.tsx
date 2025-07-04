@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { useSession } from 'next-auth/react'
+import { usePathname } from 'next/navigation'
 import { Button } from '../ui/button'
 import Image from 'next/image'
 import MobileSidebar from '../navbar/mobileSidebar'
@@ -9,10 +10,14 @@ import BottomNav from '../navbar/bottomNavbar'
 import { useTheme } from 'next-themes'
 import { Moon, Sun } from 'lucide-react'
 import ProfilePopover from './popOver'
+import SearchBar from './searchBar'
 
 const Navbar = () => {
   const { data: session } = useSession()
+  const pathname = usePathname()
   const { theme, setTheme } = useTheme()
+
+  const showSearchBar = ['/community']
 
   return (
     <>
@@ -28,32 +33,42 @@ const Navbar = () => {
           />
         </Link>
 
-        <div className="hidden md:flex items-center gap-4">
-          <Link href="/">Home</Link>
-          <Link href="/explore">Explore</Link>
-          <Link href="/upload">Upload</Link>
-          <Link href="/community">Community</Link>
-          <Link href="/contact">Contact</Link>
-        </div>
+        {!showSearchBar.includes(pathname) && (
+          <div className="hidden md:flex items-center gap-4">
+            <Link href="/">Home</Link>
+            <Link href="/explore">Explore</Link>
+            <Link href="/upload">Upload</Link>
+            <Link href="/community">Community</Link>
+            <Link href="/contact">Contact</Link>
+          </div>
+        )}
 
         <div className="flex items-center gap-2 md:mr-10">
-          {session ? (
-            <ProfilePopover />
-          ) : (
-            <Button className='rounded-full p-4'>
-              <Link href="/auth/login">Get Started</Link>
+          {showSearchBar.includes(pathname) && (
+            <div className="w-full max-w-md ml-auto">
+              <SearchBar />
+            </div>
+          )}
+          <div className={`${pathname === '/community' ? 'hidden md:block' : ''}`}>
+            {session ? (
+              <ProfilePopover />
+            ) : (
+              <Button className='rounded-full p-4'>
+                <Link href="/auth/login">Get Started</Link>
+              </Button>
+            )}
+          </div>
+
+          {showSearchBar.includes(pathname) && (
+            <Button
+              variant="ghost"
+              size="icon"
+              className="hidden md:flex"
+              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+            >
+              {theme === 'dark' ? <Sun /> : <Moon />}
             </Button>
           )}
-
-          <Button
-            variant="ghost"
-            size="icon"
-            className="hidden md:flex"
-            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-          >
-            {theme === 'dark' ? <Sun /> : <Moon />}
-          </Button>
-
           <div className="md:hidden">
             <MobileSidebar />
           </div>
