@@ -36,7 +36,7 @@ export default function MobileSidebar() {
 
       <SheetContent
         side="left"
-        className="w-[250px] p-4 bg-white/30 dark:bg-zinc-900/30 backdrop-blur-md border-r border-white/20 dark:border-zinc-800/30 shadow-xl rounded-r-xl"
+        className="w-[250px] p-4 bg-background/20 backdrop-blur-md border-r border-white/20 dark:border-zinc-800/30 shadow-xl rounded-r-xl"
       >
         <div className="flex flex-col gap-6">
           {/* Logo */}

@@ -1,5 +1,7 @@
 'use client'
 
+import Lottie from 'lottie-react'
+import Loading from '@/public/animations/loading.json'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { IVideo } from '@/models/videoModel'
@@ -20,10 +22,8 @@ export default function Explore() {
       .finally(() => setLoading(false))
   }, [])
 
-  if (loading) return <p className="text-center py-10">Loading popular videos...</p>
-
   return (
-    <section className="px-4 md:px-20 py-12 text-foreground mt-20 md:mt-24 mb-20 md:mb-10">
+    <section className="bg-background/40 mx-2 md:mx-10 rounded-2xl px-4 md:px-20 py-12 text-foreground mt-24 md:mt-28 mb-20 md:mb-10">
       <motion.h2
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
@@ -40,6 +40,10 @@ export default function Explore() {
       >
         Browse trending videos shared by our community
       </motion.p>
+
+      {loading && (
+        <Lottie animationData={Loading} loop autoplay className="w-[20%] h-[20%] m-auto"/>
+      )}
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {videos.map(video => (

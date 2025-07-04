@@ -47,7 +47,7 @@ export default function LoginPage() {
       initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className="w-[95%] flex items-center justify-center px-4 bg-background text-foreground mt-32 md:mt-38 mx-auto"
+      className="w-[95%] flex items-center justify-center px-4 text-foreground mt-32 md:mt-38 mx-auto"
     >
       <div className="w-full max-w-sm backdrop-blur-md bg-muted/40 border border-border p-6 rounded-2xl shadow-lg">
         <h1 className="text-2xl font-semibold text-center mb-6">Login</h1>
@@ -105,7 +105,7 @@ export default function LoginPage() {
         <div className="flex items-center justify-center mt-6 gap-3 flex-wrap">
           <button
             onClick={() => signIn('google', { callbackUrl: '/auth/profile' })}
-            className="hover:scale-105 transition p-2 rounded-lg bg-muted"
+            className="hover:scale-105 transition p-2 rounded-lg bg-background/40"
           >
             <img
               src="https://ucarecdn.com/8f25a2ba-bdcf-4ff1-b596-088f330416ef/"
@@ -116,7 +116,7 @@ export default function LoginPage() {
 
           <button
             onClick={() => signIn('github', { callbackUrl: '/auth/profile' })}
-            className="hover:scale-105 transition p-2 rounded-lg bg-muted"
+            className="hover:scale-105 transition p-2 rounded-lg bg-background/40"
           >
             <img
               src="https://ucarecdn.com/be5b0ffd-85e8-4639-83a6-5162dfa15a16/"

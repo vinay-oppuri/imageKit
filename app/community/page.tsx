@@ -39,7 +39,7 @@ export default function Community() {
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="px-4 md:px-20 py-12 bg-primary text-primary-foreground text-center rounded-xl mx-4 md:mx-20 mb-10 shadow-lg"
+        className="px-4 md:px-20 py-12 bg-primary/50 text-primary-foreground text-center rounded-xl mx-4 md:mx-20 mb-10 shadow-lg"
       >
         <h2 className="text-3xl font-bold mb-4">Start Creating Today</h2>
         <p className="mb-6">Join thousands of creators sharing their stories and skills.</p>
