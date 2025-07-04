@@ -32,24 +32,35 @@ const Navbar = () => {
             priority
           />
         </Link>
-
-        <div className="hidden md:flex items-center gap-4">
-          <Link href="/">Home</Link>
-          <Link href="/explore">Explore</Link>
-          <Link href="/upload">Upload</Link>
-          <Link href="/community">Community</Link>
-          <Link href="/contact">Contact</Link>
-        </div>
+        {!showSearchBar.includes(pathname) && (
+          <div className="hidden md:flex items-center gap-4">
+            <Link href="/">Home</Link>
+            <Link href="/explore">Explore</Link>
+            <Link href="/upload">Upload</Link>
+            <Link href="/community">Community</Link>
+            <Link href="/contact">Contact</Link>
+          </div>
+        )}
 
         <div className="flex items-center gap-2 md:mr-10">
-          {session ? (
+          {showSearchBar.includes(pathname) ? (
+            <SearchBar />
+          ) : session ? (
             <ProfilePopover />
           ) : (
-            <Button className='rounded-full p-4'>
+            <Button className="rounded-full p-4">
               <Link href="/auth/login">Get Started</Link>
             </Button>
           )}
 
+          {/* You can keep this if you want SearchBar to be shown always outside community too */}
+          {/* {!isCommunityPage && <SearchBar />} */}
+
+          {showSearchBar.includes(pathname) && (
+            <div className="hidden md:flex">
+              <MobileSidebar />
+            </div>
+          )}
           <Button
             variant="ghost"
             size="icon"
@@ -63,7 +74,7 @@ const Navbar = () => {
             <MobileSidebar />
           </div>
         </div>
-      </nav>
+      </nav >
 
       <BottomNav />
     </>

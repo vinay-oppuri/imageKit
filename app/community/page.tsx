@@ -5,16 +5,10 @@ import Link from 'next/link'
 import { Communities } from '@/components/communites'
 import { MotionButton } from '@/components/ui/motion-button'
 import { motion } from 'framer-motion'
-import SearchBar from '@/components/navbar/searchBar'
 
 export default function Community() {
   return (
     <div className="mt-28 md:mt-32 mb-24">
-      <div className='flex flex-row-mt-5 -mb-5'>
-        {/* <div className='m-auto'>Search Community</div> */}
-        <SearchBar/>
-        {/* <div className='m-auto'>Here</div> */}
-      </div>
       {/* Hero Section */}
       <section className="flex flex-col md:flex-row justify-between items-center px-4 md:px-20 py-10 bg-muted/40 backdrop-blur-md border border-border text-foreground rounded-xl mx-4 md:mx-20 mt-10 mb-10 shadow-lg">
         {/* Left: Highlight Preview */}
