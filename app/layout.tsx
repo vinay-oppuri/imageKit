@@ -16,8 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="min-h-screen overflow-x-hidden">
-        <div className="fixed inset-0 -z-10 bg-cover bg-center bg-no-repeat 
-                        bg-[url('/lightBG.jpg')] dark:bg-[url('/darkBG.jpg')]" />
+        <div className="fixed inset-0 -z-10 bg-cover bg-center bg-no-repeat bg-[url('/lightBG.jpg')] dark:bg-[url('/bg-dark.jpg')]"/>
 
         <Providers>
           <Navbar />
