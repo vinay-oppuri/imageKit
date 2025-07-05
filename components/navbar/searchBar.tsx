@@ -86,8 +86,8 @@ const SearchBar = () => {
 
       {/* Mobile Expanded */}
       {expanded && (
-        <div className="fixed m-auto inset-0 z-50 p-4 flex flex-col gap-2">
-          <div className="flex items-center gap-2 border-b border-border rounded-full shadow-lg">
+        <div className="fixed inset-0 z-50 p-4 flex flex-col gap-2">
+          <div className="flex items-center gap-2 rounded-full shadow-lg">
             <input
               type="text"
               placeholder="Search"
