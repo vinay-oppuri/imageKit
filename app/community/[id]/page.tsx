@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from 'react'
 import { useParams } from 'next/navigation'
-import { notFound, useRouter } from 'next/navigation'
 import JoinButton from '@/components/JoinButton'
+import toast from 'react-hot-toast'
 
 interface Community {
   _id: string
@@ -19,12 +19,10 @@ interface Community {
 }
 
 export default function CommunityPage() {
+    
   const { id } = useParams() as { id: string }
-  const router = useRouter()
-
   const [community, setCommunity] = useState<Community | null>(null)
   const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
     const fetchCommunity = async () => {
@@ -33,14 +31,16 @@ export default function CommunityPage() {
         const data = await res.json()
 
         if (!res.ok) {
-          setError(data.error || 'Unknown error')
+          toast.error(data.error)
+          setCommunity(null)
           setLoading(false)
           return
         }
 
         setCommunity(data)
       } catch (err) {
-        setError('Something went wrong')
+        toast.error('Something went Wrong')
+        setCommunity(null)
       } finally {
         setLoading(false)
       }
@@ -49,8 +49,13 @@ export default function CommunityPage() {
     if (id) fetchCommunity()
   }, [id])
 
-  if (loading) return <p className="text-center mt-20">Loading...</p>
-  if (error || !community) return <p className="text-center mt-20 text-red-500">Error: {error}</p>
+  if (loading) {
+    return <p className="text-center mt-20">Loading...</p>
+  }
+
+  if (!community) {
+    return <p className="text-center mt-20">Community not found or an error occurred.</p>
+  }
 
   return (
     <main className="max-w-4xl mx-auto py-10 px-4 space-y-6 mt-24 md:mt-28">
