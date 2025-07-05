@@ -1,60 +1,88 @@
-// app/community/[id]/page.tsx
-import { notFound } from 'next/navigation'
-import connectDB from '@/lib/dbConfig'
-import { Community, ICommunity } from '@/models/communityModel'
-import mongoose from 'mongoose'
-import JoinButton from '@/components/JoinButton' // client component
+'use client'
 
+import { useEffect, useState } from 'react'
+import { useParams } from 'next/navigation'
+import { notFound, useRouter } from 'next/navigation'
+import JoinButton from '@/components/JoinButton'
 
-export default async function CommunityPage({
-    params,
-}: {
-    params: { id: string }
-}) {
-    const { id } = params
+interface Community {
+  _id: string
+  name: string
+  description?: string
+  admin: {
+    name: string
+  }
+  members: {
+    _id: string
+    name: string
+  }[]
+}
 
-    if (!mongoose.Types.ObjectId.isValid(id)) return notFound()
+export default function CommunityPage() {
+  const { id } = useParams() as { id: string }
+  const router = useRouter()
 
-    await connectDB()
+  const [community, setCommunity] = useState<Community | null>(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
 
-    const community = await Community.findById(id)
-        .populate('admin', 'name email')
-        .populate('members', 'name')
-        .lean<ICommunity>()
+  useEffect(() => {
+    const fetchCommunity = async () => {
+      try {
+        const res = await fetch(`/api/community/${id}`)
+        const data = await res.json()
 
-    if (!community) return notFound()
+        if (!res.ok) {
+          setError(data.error || 'Unknown error')
+          setLoading(false)
+          return
+        }
 
-    return (
-        <main className="max-w-4xl mx-auto py-10 px-4 space-y-6 mt-24 md:mt-28">
-            <section>
-                <h1 className="text-4xl font-bold">{community.name}</h1>
-                <p className="text-muted-foreground mt-2">
-                    {community.description || 'No description provided.'}
-                </p>
-            </section>
+        setCommunity(data)
+      } catch (err) {
+        setError('Something went wrong')
+      } finally {
+        setLoading(false)
+      }
+    }
 
-            <section className="grid grid-cols-1 sm:grid-cols-2 gap-6 border p-4 rounded-xl shadow-sm bg-muted/10">
-                <div>
-                    <h3 className="font-semibold text-sm text-muted-foreground">Admin</h3>
-                    <p className="text-base">{(community.admin as any).name}</p>
-                </div>
+    if (id) fetchCommunity()
+  }, [id])
 
-                <div>
-                    <h3 className="font-semibold text-sm text-muted-foreground">Members</h3>
-                    <p className="text-base">{community.members.length}</p>
-                </div>
-            </section>
+  if (loading) return <p className="text-center mt-20">Loading...</p>
+  if (error || !community) return <p className="text-center mt-20 text-red-500">Error: {error}</p>
 
-            <JoinButton name={community.name} /> {/* 🔁 Client component */}
+  return (
+    <main className="max-w-4xl mx-auto py-10 px-4 space-y-6 mt-24 md:mt-28">
+      <section>
+        <h1 className="text-4xl font-bold">{community.name}</h1>
+        <p className="text-muted-foreground mt-2">
+          {community.description || 'No description provided.'}
+        </p>
+      </section>
 
-            <section className="pt-6">
-                <h2 className="text-xl font-semibold mb-2">Members</h2>
-                <ul className="list-disc list-inside space-y-1">
-                    {(community.members as any[]).map((member) => (
-                        <li key={member._id}>{member?.name}</li>
-                    ))}
-                </ul>
-            </section>
-        </main>
-    )
+      <section className="grid grid-cols-1 sm:grid-cols-2 gap-6 border p-4 rounded-xl shadow-sm bg-muted/10">
+        <div>
+          <h3 className="font-semibold text-sm text-muted-foreground">Admin</h3>
+          <p className="text-base">{community.admin.name}</p>
+        </div>
+
+        <div>
+          <h3 className="font-semibold text-sm text-muted-foreground">Members</h3>
+          <p className="text-base">{community.members.length}</p>
+        </div>
+      </section>
+
+      <JoinButton name={community.name} />
+
+      <section className="pt-6">
+        <h2 className="text-xl font-semibold mb-2">Members</h2>
+        <ul className="list-disc list-inside space-y-1">
+          {community.members.map((member) => (
+            <li key={member._id}>{member.name}</li>
+          ))}
+        </ul>
+      </section>
+    </main>
+  )
 }

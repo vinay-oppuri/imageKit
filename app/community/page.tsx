@@ -1,7 +1,10 @@
+'use client'
+
 import { CommunityCreate } from '@/components/dialogs'
 import Link from 'next/link'
 import { Communities } from '@/components/communites'
 import { MotionButton } from '@/components/ui/motion-button'
+import { motion } from 'framer-motion'
 
 export default function Community() {
   return (
@@ -32,13 +35,18 @@ export default function Community() {
       </section>
 
       {/* CTA Banner */}
-      <div className="px-4 md:px-20 py-12 bg-primary/50 text-primary-foreground text-center rounded-xl mx-4 md:mx-20 mb-10 shadow-lg">
+      <motion.section
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="px-4 md:px-20 py-12 bg-primary/50 text-primary-foreground text-center rounded-xl mx-4 md:mx-20 mb-10 shadow-lg"
+      >
         <h2 className="text-3xl font-bold mb-4">Start Creating Today</h2>
         <p className="mb-6">Join thousands of creators sharing their stories and skills.</p>
         <div className="flex flex-row justify-center gap-3">
           <CommunityCreate />
         </div>
-      </div>
+      </motion.section>
 
       {/* Community Cards */}
       <Communities />
