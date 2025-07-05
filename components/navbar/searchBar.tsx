@@ -86,7 +86,7 @@ const SearchBar = () => {
 
       {/* Mobile Expanded */}
       {expanded && (
-        <div className="fixed inset-0 z-50 bg-background p-4 flex flex-col gap-2">
+        <div className="fixed m-auto inset-0 z-50 p-4 flex flex-col gap-2">
           <div className="flex items-center gap-2 border-b border-border rounded-full shadow-lg">
             <input
               type="text"
@@ -101,7 +101,7 @@ const SearchBar = () => {
               className="p-2"
               aria-label="Close search"
             >
-              <X size={24} />
+              <X className='bg-background' size={24} />
             </button>
           </div>
           {search && <div className="mt-4 relative">{renderResults()}</div>}
