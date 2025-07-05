@@ -53,9 +53,6 @@ const Navbar = () => {
             </Button>
           )}
 
-          {/* You can keep this if you want SearchBar to be shown always outside community too */}
-          {/* {!isCommunityPage && <SearchBar />} */}
-
           {showSearchBar.includes(pathname) && (
             <div className="hidden md:flex">
               <MobileSidebar />
