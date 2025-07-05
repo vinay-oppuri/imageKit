@@ -94,14 +94,14 @@ const SearchBar = () => {
               autoFocus
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full py-2 px-4 bg-background border rounded-full outline-none"
+              className="w-full py-2 px-4 bg-background border rounded-full outline-none shadow-lg focus-within:ring-2 focus-within:ring-primary"
             />
             <button
               onClick={() => setExpanded(false)}
               className="p-2"
               aria-label="Close search"
             >
-              <X className='bg-background' size={24} />
+              <X className='bg-background rounded-sm' size={24} />
             </button>
           </div>
           {search && <div className="mt-4 relative">{renderResults()}</div>}
