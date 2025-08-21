@@ -37,14 +37,6 @@ export default function BottomNav() {
               >
                 <Icon className="w-5 h-5"/>
               </div>
-              {/* <span
-                className={cn(
-                  'mt-1 text-[11px] transition-colors',
-                  isActive ? 'text-primary font-medium' : 'text-muted-foreground'
-                )}
-              >
-                {label}
-              </span> */}
             </Link>
           )
         })}

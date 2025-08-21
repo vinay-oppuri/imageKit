@@ -28,7 +28,7 @@ export default function LoginPage() {
       email,
       password,
       redirect: false,
-      callbackUrl: "/auth/profie"
+      callbackUrl: "/auth/profile"
     })
 
     if (res?.error) {
